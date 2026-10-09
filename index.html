@@ -236,6 +236,25 @@
   .tke > div:last-child { border-right: 0; }
   .tke b { font: 400 clamp(48px, 6vw, 88px)/.9 var(--display); font-weight: 400; }
   .tke-note { margin: 0; padding: 1.4rem 1.25rem; font-size: 20px; font-style: italic; border-bottom: 1px solid var(--ink); }
+  .gallery { display: grid; border-bottom: 1px solid var(--ink); }
+  .gallery figure { margin: 0; display: flex; flex-direction: column; border-right: 1px solid var(--ink); overflow: hidden; }
+  .gallery figure:last-child { border-right: 0; }
+  .gallery img { display: block; width: 100%; height: 100%; object-fit: cover; flex: 1; min-height: 0; transition: transform .6s; }
+  .gallery figure:hover img { transform: scale(1.03); }
+  .gallery figcaption { padding: .6rem 1rem; border-top: 1px solid var(--ink); background: var(--primary); position: relative; }
+  .gallery.charter { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; height: min(70vw, 760px); }
+  .gallery.charter .g-main { grid-row: span 2; }
+  .gallery.charter figure:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .gallery.charter figure:nth-child(3) { border-right: 0; }
+  .gallery.duo { grid-template-columns: 1fr 1fr; }
+  .gallery.duo img { aspect-ratio: 1.1; }
+  @media (max-width: 700px) {
+    .gallery.charter, .gallery.duo { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+    .gallery.charter .g-main { grid-row: auto; }
+    .gallery figure { border-right: 0; border-bottom: 1px solid var(--ink); }
+    .gallery figure:last-child { border-bottom: 0; }
+    .gallery img { aspect-ratio: 1.5; height: auto; }
+  }
   @media (max-width: 700px) { .tke { grid-template-columns: 1fr; } .tke > div { border-right: 0; border-bottom: 1px solid var(--ink); } .tke > div:last-child { border-bottom: 0; } }
 
   /* ---------- off the clock ---------- */
@@ -431,11 +450,11 @@
     <div class="bridge-lede">
       <div class="rv">
         <div class="stat">2 → 41</div>
-        <p class="mono" style="font-size:13px;margin-top:.8rem">Members, from refounding to past the 40 needed to charter</p>
+        <p class="mono" style="font-size:13px;margin-top:.8rem">Members, from refounding to an official charter</p>
       </div>
       <div class="rv">
         <p>In Winter 2022, a recruiter from Tau Kappa Epsilon's national organization came to Drexel and approached me and a friend about refounding the chapter. It had been off campus for five years.</p>
-        <p>We started with two people. By the time I graduated, the chapter had 41 brothers, enough to clear the 40-member threshold for chartering.</p>
+        <p>We started with two people. By the time I graduated, the chapter had 41 brothers, past the 40-member threshold, and TKE had officially chartered us. On chartering night I accepted our charter plaque from a representative of the national organization.</p>
       </div>
     </div>
 
@@ -451,6 +470,19 @@
       <div class="rv"><b>BG55</b><span class="mono">Hosted a meet &amp; greet with Eagles defensive end Brandon Graham</span></div>
     </div>
     <p class="tke-note">Beyond the headline events, we ran a steady calendar of social, brotherhood, and philanthropy events, building a chapter culture almost from scratch.</p>
+
+    <div class="sub-bar mono"><span>Chartering night</span><span>(03)</span></div>
+    <div class="gallery charter">
+      <figure class="g-main"><img src="assets/tke/charter-plaque.jpg" alt="Noah receiving the chapter's charter plaque from a TKE national representative" loading="lazy"><figcaption class="mono">Accepting our charter plaque from TKE nationals</figcaption></figure>
+      <figure><img src="assets/tke/charter-speech.jpg" alt="Noah speaking at the Drexel podium on chartering night" loading="lazy"><figcaption class="mono">Speaking at the chartering banquet</figcaption></figure>
+      <figure><img src="assets/tke/charter-group.jpg" alt="The chartered chapter posing with the charter" loading="lazy"><figcaption class="mono">The chartered chapter</figcaption></figure>
+    </div>
+
+    <div class="sub-bar mono"><span>Meet &amp; greet · Brandon Graham, Philadelphia Eagles</span><span>(02)</span></div>
+    <div class="gallery duo">
+      <figure><img src="assets/tke/graham-house.jpg" alt="Brandon Graham with the chapter on the steps of the TKE house" loading="lazy"><figcaption class="mono">On the steps of the TKE house</figcaption></figure>
+      <figure><img src="assets/tke/graham-group.jpg" alt="Brandon Graham with the chapter in front of the sponsor banner" loading="lazy"><figcaption class="mono">With the chapter and event sponsors</figcaption></figure>
+    </div>
   </section>
 
   <!-- ===== bridge ===== -->
@@ -466,7 +498,7 @@
       <div class="rv">
         <p>I started at age nine at the Links Bridge Club in Johannesburg, coached by Neville Eber. My father, Alon, has also played for South Africa.</p>
         <p>I've since played for three countries. I played for England and the USA in World Youth events, and for South Africa in the Open series of the world championships, most recently in Herning, Denmark in 2025.</p>
-        <p>Bridge is basically probability, inference, and partnership under time pressure. That's a big part of why quant finance appeals to me.</p>
+        <p>At its core, bridge is a game of probability and inference. A successful partnership has to communicate information based on the inferences each player picks up over the course of a hand.</p>
       </div>
     </div>
 
@@ -500,7 +532,7 @@
   <section id="off">
     <div class="sec-title"><h2>Off the clock</h2><span class="mono">(04)</span></div>
     <div class="hobbies">
-      <div class="hobby rv"><span class="suit">♣</span><h3>Soccer</h3><p>I've played my whole life. Good soccer is like good bridge: read the other side, communicate with teammates without stopping play, and decide fast on incomplete information.</p><p>I'm also a die-hard <b>Manchester United</b> supporter in good seasons and difficult ones. Early kickoffs on US time don't stop me, and I'm always up for an argument about tactics, transfers, or the underlying numbers.</p></div>
+      <div class="hobby rv"><span class="suit">♣</span><h3>Soccer</h3><p>I've played my whole life. Good soccer is like good bridge: read the other side, communicate with teammates without stopping play, and decide fast on incomplete information.</p><p>I'm also a die-hard <b>Manchester United</b> supporter in good seasons and difficult ones. Early kickoffs on US time don't stop me, and I'm always up for a debate on tactics or transfer news.</p></div>
       <div class="hobby rv"><span class="suit r">♦</span><h3>Running</h3><p>Running is how I clear my head. I've run Philadelphia's <b>Rocky Run</b>, and my goal is to one day run the <b>New York City Marathon</b>. Until then, I'm logging miles and watching my pace come down week by week.</p></div>
       <div class="hobby rv"><span class="suit">♠</span><h3>Pickleball</h3><p>I'm an avid pickleball player and try to get out on the court with friends whenever I can.</p></div>
       <div class="hobby rv"><span class="suit r">♥</span><h3>Trivia</h3><p>I'm a trivia enthusiast. I play <b>JetPunk</b> and <b>Sporcle</b> quizzes regularly and love testing my general knowledge.</p></div>
