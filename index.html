@@ -133,14 +133,16 @@
   @keyframes slide { to { transform: translateX(-50%); } }
 
   /* ---------- about box ---------- */
-  .about { padding: 9rem 1rem; }
-  .box { max-width: 46rem; margin: 0 auto; border: 1px solid var(--ink); background: var(--primary); }
+  .about { padding: 0; }
+  .box { border-bottom: 1px solid var(--ink); background: var(--primary); }
   .box > .title { background: var(--ink); color: var(--primary); text-align: center; padding: 4px 0; font-weight: 700; }
-  .box .content { padding: 3rem 3.5rem; font: 400 1.25rem/1.65 var(--serif); }
-  .box .content p { margin: 0 0 1.2em; }
-  .box .content p:last-child { margin: 0; }
+  .box .content { display: grid; grid-template-columns: repeat(3, 1fr); font: 400 16.5px/1.65 var(--serif); }
+  .box .content p { margin: 0; padding: 1.8rem 1.6rem; border-right: 1px solid var(--ink); }
+  .box .content p:last-child { border-right: 0; }
+  .box .content p:first-child { font: 400 21px/1.4 var(--display); }
   .box .content b { font-weight: 600; }
   .box .content a { text-decoration: none; border-bottom: 1px solid currentColor; }
+  @media (max-width: 900px) { .box .content { grid-template-columns: 1fr; } .box .content p { border-right: 0; border-bottom: 1px solid var(--ink); } .box .content p:last-child { border-bottom: 0; } }
   .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
   .facts > * { padding: 1rem 1.2rem; border-right: 1px solid var(--ink); }
   .facts > *:last-child { border-right: 0; }
@@ -148,8 +150,8 @@
   .fact-link:hover { background: var(--ink); color: var(--primary); }
   .facts b { display: block; font: 400 1.6rem/1.1 var(--display); text-transform: none; letter-spacing: 0; margin-bottom: 6px; }
   @media (max-width: 700px) {
-    .about { padding: 4rem 0; }
-    .box .content { padding: 1.8rem 1.3rem; font-size: 1.05rem; }
+    .box .content p { border-right: 0; border-bottom: 1px solid var(--ink); padding: 1.4rem 1.25rem; }
+    .box .content p:last-child { border-bottom: 0; }
     .facts { grid-template-columns: 1fr; }
     .facts > * { border-right: 0; border-bottom: 1px solid var(--ink); }
   }
@@ -353,6 +355,7 @@
   @media (max-width: 700px) { .tke { grid-template-columns: 1fr; } .tke > div { border-right: 0; border-bottom: 1px solid var(--ink); } .tke > div:last-child { border-bottom: 0; } }
 
   /* ---------- puzzle ---------- */
+  .pz [hidden] { display: none !important; }
   .pz { display: grid; grid-template-columns: 1.1fr 1fr; border-bottom: 1px solid var(--ink); }
   .pz-left { padding: 2rem 1.6rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .9rem; }
   .pz-left h3 { margin: 0; font: 400 clamp(26px, 2.8vw, 38px)/1.1 var(--display); }
