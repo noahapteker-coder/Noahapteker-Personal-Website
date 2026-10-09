@@ -170,6 +170,8 @@
   .wcard p + p { margin-top: -.3rem; }
   .wcard.more { justify-content: center; min-height: 0; }
   .wcard.more p { font-size: 20px; font-style: italic; }
+  .wcard p.myrole { border-left: 2px solid var(--primary); padding-left: .8rem; opacity: 1; }
+  .wcard p.myrole .mono { display: block; opacity: .7; margin-bottom: 2px; }
   .srcs { display: flex; gap: 1rem; opacity: .75; }
   .srcs a { text-decoration: none; border-bottom: 1px solid currentColor; }
   .srcs a:hover { opacity: 1; }
@@ -229,6 +231,42 @@
   @media (max-width: 900px) { .press { grid-template-columns: 1fr 1fr; } .press a:nth-child(3n) { border-right: 1px solid var(--ink); } .press a:nth-child(2n) { border-right: 0; } }
   @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
+
+  /* ---------- featured hand ---------- */
+  .feature { display: grid; grid-template-columns: 1fr 1.3fr .75fr; border-bottom: 1px solid var(--ink); }
+  .feature > * { margin: 0; border-right: 1px solid var(--ink); min-width: 0; }
+  .feature > *:last-child { border-right: 0; }
+  .f-photo img { display: block; width: 100%; height: 100%; object-fit: cover; max-height: 640px; }
+  .f-text { padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: .9rem; }
+  .f-text h3 { margin: 0; font: 400 clamp(36px, 4vw, 60px)/1 var(--display); text-transform: uppercase; }
+  .f-text p { margin: 0; font-size: 18px; }
+  .f-text b { font-weight: 400; font-style: italic; }
+  .f-clip { display: flex; flex-direction: column; background: var(--primary); }
+  .f-clip a { flex: 1; display: block; overflow: hidden; }
+  .f-clip img { display: block; width: 100%; height: 100%; max-height: 600px; object-fit: cover; object-position: top; }
+  .f-clip figcaption { padding: .6rem 1rem; border-top: 1px solid var(--ink); }
+  @media (max-width: 900px) {
+    .feature { grid-template-columns: 1fr 1fr; }
+    .f-text { grid-column: 1 / -1; grid-row: 1; border-right: 0; border-bottom: 1px solid var(--ink); }
+  }
+  @media (max-width: 600px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature > * { border-right: 0; border-bottom: 1px solid var(--ink); }
+    .f-photo img { max-height: 420px; }
+    .f-clip img { max-height: 380px; }
+  }
+
+  /* ---------- skills ---------- */
+  .tools { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .tool { padding: 1.4rem 1.4rem 1.6rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; transition: background .2s, color .2s; }
+  .tool:nth-child(3n) { border-right: 0; }
+  .tool:hover { background: var(--ink); color: var(--primary); }
+  .tool b { font: 400 clamp(40px, 5vw, 72px)/.95 var(--display); text-transform: uppercase; font-weight: 400; }
+  .tool .mono:last-child { line-height: 1.6; }
+  .langs { display: flex; flex-wrap: wrap; gap: .6rem; padding: 1.2rem 1.25rem; border-bottom: 1px solid var(--ink); }
+  .langs span { border: 1px solid var(--ink); padding: .45rem .9rem; font-size: 13px; }
+  @media (max-width: 900px) { .tools { grid-template-columns: 1fr 1fr; } .tool:nth-child(3n) { border-right: 1px solid var(--ink); } .tool:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 560px) { .tools { grid-template-columns: 1fr; } .tool { border-right: 0 !important; } }
 
   /* ---------- leadership ---------- */
   .tke-mark { display: flex; align-items: center; gap: .9rem; text-align: right; }
@@ -383,8 +421,9 @@
         <div class="top mono"><span>Ports · EV charging</span><span>#0001/05</span></div>
         <h3>Port of Oakland Green Power Microgrid</h3>
         <div class="role">With Moffatt &amp; Nichol</div>
-        <p>The project started as a full seaport microgrid: a 1 MW solar array, 6.5 MW of battery storage, and about 150 heavy-duty EV chargers, backed by a $41.6M state grant. I sized and modeled the system, worked on Burns' 30-charger share of the design, and helped coordinate the 30/60/90% reviews.</p>
+        <p>The project started as a full seaport microgrid: a 1 MW solar array, 6.5 MW of battery storage, and about 150 heavy-duty EV chargers, backed by a $41.6M state grant.</p>
         <p>In later iterations the Port narrowed the scope to EV charging alone. That package went out to bid in December 2025 as 115 heavy-duty chargers across five sites.</p>
+        <p class="myrole"><span class="mono">My role</span>Sized and modeled the solar, storage, and charging system, worked on Burns' 30-charger share of the design, and helped coordinate the 30/60/90% design reviews.</p>
         <div class="big">$52M<small>Engineer's estimate, EV charging bid package</small></div>
         <div class="tags mono"><span>EV charging</span><span>Solar + BESS</span><span>Design reviews</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-to-help-provide-greener-and-more-resilient-power-to-the-port-of-oakland/" target="_blank" rel="noopener">Burns ↗</a><a href="https://www.portofoakland.com/wp-content/uploads/2025/12/4379-AD-COPY-TCEP-Green-Power-Microgrid-Project-EV-Chargers.pdf" target="_blank" rel="noopener">Bid notice ↗</a></div>
@@ -394,7 +433,8 @@
         <div class="top mono"><span>Transit · Electrical safety</span><span>#0002/05</span></div>
         <h3>NJ Transit Arc Flash Study</h3>
         <div class="role">River Line</div>
-        <p>This was part of Burns' statewide arc flash hazard analysis and electrical safety program for NJ Transit, which covers more than 200 facilities. I made site visits along the River Line, the light rail between Trenton and Camden, to collect equipment data. I then built the system model in SKM, validated it, and wrote up the findings in the engineering report.</p>
+        <p>This was part of Burns' statewide arc flash hazard analysis and electrical safety program for NJ Transit, which covers more than 200 facilities.</p>
+        <p class="myrole"><span class="mono">My role</span>Made site visits along the River Line, the light rail between Trenton and Camden, to collect equipment data. Built and validated the system model in SKM, then wrote up the findings in the engineering report.</p>
         <div class="big">200+<small>Facilities in the statewide program</small></div>
         <div class="tags mono"><span>SKM PowerTools</span><span>Arc flash</span><span>Field surveys</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/?p=51933" target="_blank" rel="noopener">Burns ↗</a></div>
@@ -404,7 +444,8 @@
         <div class="top mono"><span>Highways · Lighting</span><span>#0003/05</span></div>
         <h3>PA Turnpike Wilkes-Barre Lighting</h3>
         <div class="role">Toll plaza removal</div>
-        <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out. I redesigned the interchange lighting for the new layout, removing and relocating about 50 light fixtures and checking light levels in AGI32.</p>
+        <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out, and the interchange lighting had to be redesigned for the new layout.</p>
+        <p class="myrole"><span class="mono">My role</span>Removed and relocated about 50 light fixtures for the new layout and checked light levels in AGI32.</p>
         <div class="big">~50<small>Fixtures removed &amp; relocated</small></div>
         <div class="tags mono"><span>AGI32</span><span>Roadway lighting</span></div>
         <div class="srcs mono"><a href="https://www.fox56.com/news/local/overnight-closure-planned-at-wilkes-barre-interchange-on-turnpike" target="_blank" rel="noopener">Context ↗</a></div>
@@ -415,7 +456,8 @@
         <h3>Clemson Ductbank Relocation</h3>
         <div class="role">Clemson University</div>
         <p>A new pedestrian bridge over Williamson Road, linking a new parking structure to campus, was going to sit right on top of an existing medium-voltage ductbank. Burns designed the relocation of the ductbank along with its medium-voltage circuits and fiber optic cabling, then provided bid-phase support and coordination with the adjacent projects.</p>
-        <div class="tags mono"><span>MV distribution</span><span>Utility relocation</span></div>
+        <p class="myrole"><span class="mono">My role</span>Oversaw the building of the design package. Drew the single-line diagrams and site plans in AutoCAD and compiled the electrical specifications.</p>
+        <div class="tags mono"><span>AutoCAD</span><span>MV distribution</span><span>Specifications</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-continues-to-be-a-trusted-advisor-for-power-and-utilities-projects-at-clemson-university/" target="_blank" rel="noopener">Burns ↗</a></div>
       </article>
 
@@ -423,7 +465,8 @@
         <div class="top mono"><span>Energy · Analytics</span><span>#0005/05</span></div>
         <h3>Cordia Power Study</h3>
         <div class="role">Utility data analysis &amp; forecasting</div>
-        <p>I cleaned and validated three years of utility billing data, catching errors and anomalous readings. Then I forecast consumption to support cost-cutting recommendations. This project is what pushed me toward data science.</p>
+        <p>A review of three years of utility billing to find ways to cut electricity costs. This project is what pushed me toward data science.</p>
+        <p class="myrole"><span class="mono">My role</span>Cleaned and validated the billing data, catching errors and anomalous readings, then built the usage trends and forecasts behind the cost-cutting recommendations.</p>
         <div class="big">3 yrs<small>Of billing data, cleaned and forecast</small></div>
         <div class="tags mono"><span>Excel / VBA</span><span>Forecasting</span></div>
       </article>
@@ -443,6 +486,24 @@
         <p>I designed and modeled electrical control panels in Fusion 360 and helped wire them. I also sourced hardware to spec and made site visits to check installations against the drawings.</p>
         <div class="tags mono"><span>Fusion 360</span><span>Control panels</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== skills ===== -->
+  <section id="skills">
+    <div class="sec-title"><h2>Skills</h2><span class="mono">(06 + 06)</span></div>
+    <div class="sub-bar mono"><span>Engineering software</span><span>(06)</span></div>
+    <div class="tools">
+      <div class="tool rv"><span class="mono dim">01</span><b>AutoCAD</b><span class="mono">Drafting · single-line diagrams &amp; site plans<br>Used on: Clemson ductbank</span></div>
+      <div class="tool rv"><span class="mono dim">02</span><b>Revit</b><span class="mono">BIM · electrical building design</span></div>
+      <div class="tool rv"><span class="mono dim">03</span><b>SKM</b><span class="mono">Power system studies · arc flash<br>Used on: NJ Transit River Line</span></div>
+      <div class="tool rv"><span class="mono dim">04</span><b>AGI32</b><span class="mono">Lighting design &amp; photometrics<br>Used on: PA Turnpike Wilkes-Barre</span></div>
+      <div class="tool rv"><span class="mono dim">05</span><b>EasyPower</b><span class="mono">Power system analysis · arc flash</span></div>
+      <div class="tool rv"><span class="mono dim">06</span><b>ETAP</b><span class="mono">Power system modeling &amp; simulation</span></div>
+    </div>
+    <div class="sub-bar mono"><span>Programming &amp; data</span><span>(06)</span></div>
+    <div class="langs mono">
+      <span>Python</span><span>R</span><span>SQL</span><span>MATLAB</span><span>C</span><span>Excel / VBA</span>
     </div>
   </section>
 
@@ -505,6 +566,19 @@
       </div>
     </div>
 
+    <div class="sub-bar mono"><span>Featured hand · Lyon 2017</span><span>IBPA shortlist</span></div>
+    <div class="feature">
+      <figure class="f-photo rv"><img src="assets/bridge/playing.jpg" alt="Noah at the bridge table, studying his hand" loading="lazy"></figure>
+      <div class="f-text rv">
+        <div class="mono dim">5th World Youth Open Championships · Junior Teams</div>
+        <h3>A double squeeze at 16</h3>
+        <p>In the first round of the Junior Teams in Lyon, I was declaring 4<span class="r">♥</span> against a team from Finland. After drawing trumps, I reached a four-card ending in which neither opponent could keep all their guards. A double squeeze turned dummy's last <span class="r">♦</span>4 into the tenth trick.</p>
+        <p>The hand was worth 8 IMPs in a 37–0 win. It was written up in the championship's daily bulletin as "Fast learner" and later <b>shortlisted for the IBPA's Richard Freeman Junior Deal of the Year</b>.</p>
+        <div class="srcs mono"><a href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener">2018 IBPA Awards booklet ↗</a><a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener">Bulletin write-up ↗</a></div>
+      </div>
+      <figure class="f-clip rv"><a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener"><img src="assets/bridge/fast-learner.jpg" alt="Daily bulletin article 'Fast learner' by Brent Manley describing Noah's double squeeze" loading="lazy"></a><figcaption class="mono">"Fast learner" · Brent Manley, daily bulletin</figcaption></figure>
+    </div>
+
     <ul class="results">
       <li class="rv"><span class="yr">2025</span><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2025</span><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
@@ -514,11 +588,14 @@
       <li class="rv"><span class="yr">2021</span><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2019</span><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2018</span><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2017</span><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2017</span><div><h4>England, Under-26: World Youth Teams Championships</h4></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
     </ul>
 
-    <div class="sub-bar mono"><span>In the press</span><span>(09)</span></div>
+    <div class="sub-bar mono"><span>In the press</span><span>(11)</span></div>
     <div class="press">
+      <a href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener"><span class="mono">IBPA Awards · 2018</span><span class="t">Richard Freeman Junior Deal of the Year</span><span class="d">Compiled by John Carruthers. Noah's Lyon hand is on the shortlist.</span></a>
+      <a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener"><span class="mono">WBF Daily Bulletin · 2017</span><span class="t">Fast learner</span><span class="d">Brent Manley on the double squeeze in Lyon.</span></a>
       <a href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2020</span><span class="t">Bridging the gap</span><span class="d">Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</span></a>
       <a href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2024</span><span class="t">SA team at Argentina championship a Jewish affair</span><span class="d">Father and son qualify for South Africa.</span></a>
       <a href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener"><span class="mono">ACBL Daily Bulletin · 2023</span><span class="t">U.S. juniors at the World Youth Championships</span><span class="d">USA1 tops the Under-26 round robin in Veldhoven.</span></a>
