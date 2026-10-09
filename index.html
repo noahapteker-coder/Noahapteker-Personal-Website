@@ -124,6 +124,7 @@
   }
   @media (max-width: 700px) {
     .hero-row { flex-direction: column; align-items: flex-start; }
+    .hero-row a.cta { white-space: normal; line-height: 1.6; }
     .name { font-size: 17vw; white-space: normal; text-align: left; padding-left: .75rem; line-height: .95; }
   }
 
@@ -280,6 +281,13 @@
     .yr-group ul { padding-left: 1.25rem; }
   }
 
+  .press-all > summary { list-style: none; cursor: pointer; transition: background .2s, color .2s; }
+  .press-all > summary::-webkit-details-marker { display: none; }
+  .press-all > summary:hover { background: var(--ink); color: var(--primary); }
+  .press-all .chev { font: 400 18px/1 var(--display); transition: transform .25s; }
+  .press-all[open] > summary .chev { transform: rotate(45deg); }
+  .press-all .years { border-top: 0; }
+
   /* ---------- featured hand ---------- */
   .feature { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 1px solid var(--ink); }
   .feature > * { margin: 0; border-right: 1px solid var(--ink); min-width: 0; }
@@ -338,12 +346,12 @@
   .gallery img { display: block; width: 100%; height: 100%; object-fit: cover; flex: 1; min-height: 0; transition: transform .6s; }
   .gallery figure:hover img { transform: scale(1.03); }
   .gallery figcaption { padding: .6rem 1rem; border-top: 1px solid var(--ink); background: var(--primary); position: relative; }
-  .gallery.charter { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; height: min(70vw, 760px); }
+  .gallery.charter { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; height: min(46vw, 520px); }
   .gallery.charter .g-main { grid-row: span 2; }
   .gallery.charter figure:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--ink); }
   .gallery.charter figure:nth-child(3) { border-right: 0; }
   .gallery.duo { grid-template-columns: 1fr 1fr; }
-  .gallery.duo img { aspect-ratio: 1.1; }
+  .gallery.duo img { aspect-ratio: 1.6; }
   @media (max-width: 700px) {
     .gallery.charter, .gallery.duo { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
     .gallery.charter .g-main { grid-row: auto; }
@@ -420,8 +428,8 @@
     </figure>
     </div>
     <div class="hero-row">
-      <div class="tag">Engineering → Data Science → Finance.<br>From Joburg to Philly to NYC.</div>
-      <a class="cta mono" href="#contact">Open to quant opportunities →</a>
+      <div class="tag">MS Data Science, Columbia · former electrical engineer.<br>Engineering → Data Science → Finance.</div>
+      <a class="cta mono" href="#contact">Seeking Summer 2027 quant &amp; data science internships →</a>
     </div>
     <h1 class="name">Noah Apteker</h1>
   </section>
@@ -435,7 +443,7 @@
       <div class="content">
         <p>I've loved solving problems for as long as I can remember, and patterns have always spoken to me. I was a strong chess player growing up before carrying that over to bridge, and I'm still hooked on puzzles like Sudoku and crosswords. An analytical path felt like my calling.</p>
         <p>I grew up in <b>Johannesburg</b> and came to the US for a <b>BS in Electrical Engineering at Drexel</b>. I then spent two years as an electrical engineer at Burns Engineering, working on power, lighting, and electrical safety projects for ports, transit agencies, highways, and universities. The more of that work turned into data problems, the more I wanted to work on the data itself.</p>
-        <p>Now I'm pursuing an <b>MS in Data Science at Columbia</b>, researching Bayesian models in the Movement Recovery Lab and replicating a deep-learning trend-following strategy for my finance coursework. Markets are the hardest pattern-finding problem I know, and my long-term career aspiration is to work in <b>quantitative finance</b>.</p>
+        <p>Now I'm pursuing an <b>MS in Data Science at Columbia</b>, researching Bayesian models in the Movement Recovery Lab and replicating a deep-learning trend-following strategy for my finance coursework. Markets are the hardest pattern-finding problem I know. I'm looking for quant and data science internships for <b>Summer 2027</b>, and my long-term career aspiration is to work in <b>quantitative finance</b>.</p>
       </div>
       <div class="facts mono">
         <div><b>Columbia</b>MS Data Science<br>(Dec 2027)</div>
@@ -456,8 +464,8 @@
         <div class="role">Movement Recovery Laboratory · research for academic credit · Sep 2026 – now</div>
         <p><b>Bayesian modeling of non-sigmoidal neural recruitment curves.</b> When a nerve pathway is stimulated harder and harder, the muscle's response, the motor-evoked potential (MEP), grows along a "recruitment curve." Models usually assume an S shape, but real data often doesn't follow one. The goal is hierarchical Bayesian models that fit more flexible curves and show how much confidence each estimate deserves.</p>
         <ul>
-          <li>Apply the lab's Python pipelines to extract MEPs from stimulation data and measure their size</li>
-          <li>Contribute to recruitment-curve modeling in the lab's <b>hbMEP</b> framework</li>
+          <li>Extract MEPs from stimulation data and measure their size using the lab's Python pipelines</li>
+          <li>Build recruitment-curve models in the lab's <b>hbMEP</b> framework</li>
           <li>Next: new curve functions, parameter uncertainty, and evaluating models on how well they predict</li>
         </ul>
         <div class="tags mono"><span>Python</span><span>Bayesian inference</span><span>Hierarchical models</span><span>Signal processing</span></div>
@@ -534,7 +542,7 @@
         </summary>
         <div class="pbody">
           <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out, and the interchange lighting had to be redesigned for the new layout.</p>
-        <p class="myrole"><span class="mono">My role</span>Removed and relocated about 50 light fixtures for the new layout and checked light levels in AGI32.</p>
+        <p class="myrole"><span class="mono">My role</span>Redesigned the placement of about 50 light fixtures for the new interchange layout and verified light levels in AGI32.</p>
         <div class="tags mono"><span>AGI32</span><span>Roadway lighting</span></div>
         <div class="srcs mono"><a href="https://www.fox56.com/news/local/overnight-closure-planned-at-wilkes-barre-interchange-on-turnpike" target="_blank" rel="noopener">Context ↗</a></div>
         </div>
@@ -585,8 +593,8 @@
   <section id="skills">
     <div class="sec-title"><h2>Skills</h2></div>
     <dl class="skill-list">
-      <dt class="mono">Engineering software</dt><dd>AutoCAD · Revit · SKM · AGI32 · EasyPower · ETAP</dd>
       <dt class="mono">Programming &amp; data</dt><dd>Python · R (Harvard certified) · SQL · MATLAB · C · Excel / VBA</dd>
+      <dt class="mono">Engineering software</dt><dd>AutoCAD · Revit · SKM · AGI32 · EasyPower · ETAP</dd>
     </dl>
   </section>
 
@@ -614,7 +622,7 @@
     <div class="tke">
       <div class="rv"><b>41</b><span class="mono">Brothers, up from 2</span></div>
       <div class="rv"><b>$2K</b><span class="mono">Raised for St. Jude Children's Research Hospital</span></div>
-      <div class="rv"><b>BG55</b><span class="mono">Hosted a meet &amp; greet with Eagles defensive end Brandon Graham</span></div>
+      <div class="rv"><b>Eagles</b><span class="mono">Hosted a meet &amp; greet with Philadelphia Eagles defensive end Brandon Graham</span></div>
     </div>
     <p class="tke-note">Beyond the headline events, we ran a steady calendar of social, brotherhood, and philanthropy events, building a chapter culture almost from scratch.</p>
 
@@ -640,7 +648,6 @@
       <div class="rv">
         <div class="stat">Youngest ever</div>
         <p class="mono" style="font-size:13px;margin-top:.8rem">South African National Teams champion, age 16 (2018)</p>
-        <blockquote>"Bridge keeps your mind sharp."<cite class="mono">SA Jewish Report, 2020</cite></blockquote>
       </div>
       <div class="rv">
         <p>I started at age nine at the Links Bridge Club in Johannesburg, coached by Neville Eber. My father, Alon, has also played for South Africa.</p>
@@ -705,12 +712,13 @@
         <summary><span class="yr">2017</span><span class="hl">Shortlisted: IBPA Richard Freeman Junior Deal of the Year</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
         <ul>
           <li><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-          <li><div><h4>England, Under-26: World Youth Teams Championships</h4></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>World Youth Open Championships, Lyon: Junior Teams</h4><p>Norton team · opened with a 37–0 win over Finland</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
         </ul>
       </details>
     </div>
 
-    <div class="sub-bar mono"><span>In the press</span><span>(11)</span></div>
+    <details class="press-all">
+      <summary class="sub-bar mono"><span>In the press (11)</span><span class="chev" aria-hidden="true">+</span></summary>
     <div class="years press-years">
       <details class="yr-group rv">
         <summary><span class="yr">2025</span><span class="hl">WBF Championships: the South African perspective</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
@@ -764,6 +772,7 @@
         </ul>
       </details>
     </div>
+    </details>
   </section>
 
   <!-- ===== off the clock ===== -->
@@ -784,6 +793,7 @@
     <div class="cta-sub mono">
       <a href="mailto:nta3125@columbia.edu">nta3125@columbia.edu</a>
       <a href="https://www.linkedin.com/in/noah-apteker" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/noahapteker-coder" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </section>
 
