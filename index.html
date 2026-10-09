@@ -231,7 +231,8 @@
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
 
   /* ---------- off the clock ---------- */
-  .hobbies { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .hobbies { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .hobby:nth-child(2n) { border-right: 0; }
   .hobby p b { font-weight: 400; font-style: italic; }
   .hobby { padding: 1.6rem 1.4rem 2rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .8rem; }
   .hobby:last-child { border-right: 0; }
@@ -459,11 +460,12 @@
 
   <!-- ===== off the clock ===== -->
   <section id="off">
-    <div class="sec-title"><h2>Off the clock</h2><span class="mono">(03)</span></div>
+    <div class="sec-title"><h2>Off the clock</h2><span class="mono">(04)</span></div>
     <div class="hobbies">
       <div class="hobby rv"><span class="suit">♣</span><h3>Soccer</h3><p>I've played my whole life. Good soccer is like good bridge: read the other side, communicate with teammates without stopping play, and decide fast on incomplete information.</p><p>I'm also a die-hard <b>Manchester United</b> supporter in good seasons and difficult ones. Early kickoffs on US time don't stop me, and I'm always up for an argument about tactics, transfers, or the underlying numbers.</p></div>
-      <div class="hobby rv"><span class="suit r">♦</span><h3>Running</h3><p>It's how I clear my head. I like the steady progress of a training block: logging miles, tracking pace, and watching the numbers come down week by week.</p></div>
-      <div class="hobby rv"><span class="suit">♠</span><h3>Pickleball</h3><p>I'm an avid pickleball player. It's fast, social, and more tactical than it looks. Doubles is a partnership game: know where your partner will be, play the percentages at the kitchen line, and wait for the right ball.</p></div>
+      <div class="hobby rv"><span class="suit r">♦</span><h3>Running</h3><p>Running is how I clear my head. I've run Philadelphia's <b>Rocky Run</b>, and my goal is to one day run the <b>New York City Marathon</b>. Until then, I'm logging miles and watching my pace come down week by week.</p></div>
+      <div class="hobby rv"><span class="suit">♠</span><h3>Pickleball</h3><p>I'm an avid pickleball player and try to get out on the court with friends whenever I can.</p></div>
+      <div class="hobby rv"><span class="suit r">♥</span><h3>Trivia</h3><p>I'm a trivia enthusiast. I play <b>JetPunk</b> and <b>Sporcle</b> quizzes regularly and love testing my general knowledge, from capitals and flags to sports and history.</p></div>
     </div>
   </section>
 
