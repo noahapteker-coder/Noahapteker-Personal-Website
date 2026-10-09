@@ -241,6 +241,33 @@
   @media (max-width: 1000px) { .bridge-lede.three { grid-template-columns: 1fr 1fr; } .bridge-lede.three .lede-photo { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); } .lede-photo img { max-height: 520px; } }
   @media (max-width: 800px) { .bridge-lede.three { grid-template-columns: 1fr; } }
 
+  /* ---------- Burns project dropdowns ---------- */
+  .pdrops { border-bottom: 1px solid var(--primary); }
+  .pdrop + .pdrop { border-top: 1px solid var(--primary); }
+  .pdrop summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 5.5rem 1fr auto 2rem; align-items: center; gap: 1.2rem; padding: 1.2rem 1.25rem; transition: background .2s, color .2s; }
+  .pdrop summary::-webkit-details-marker { display: none; }
+  .pdrop summary:hover { background: var(--primary); color: var(--ink); }
+  .pdrop .ptitle { display: flex; flex-direction: column; gap: .25rem; }
+  .pdrop .ptitle b { font: 400 clamp(21px, 2vw, 28px)/1.15 var(--display); }
+  .pdrop .ptitle i { font-size: 15px; opacity: .8; }
+  .pdrop .pstat { font: 400 clamp(26px, 2.6vw, 36px)/1 var(--display); text-align: right; }
+  .pdrop .pstat small { display: block; font-size: 10.5px; margin-top: 5px; opacity: .7; max-width: 15rem; margin-left: auto; }
+  .pdrop .chev { font: 400 26px/1 var(--display); text-align: right; transition: transform .25s; }
+  .pdrop[open] .chev { transform: rotate(45deg); }
+  .pdrop[open] summary { border-bottom: 1px dashed color-mix(in srgb, var(--primary) 40%, transparent); }
+  .pbody { padding: 1.2rem 1.25rem 1.6rem calc(5.5rem + 2.45rem); display: flex; flex-direction: column; gap: .9rem; max-width: 62rem; }
+  .pbody p { margin: 0; font-size: 16.5px; line-height: 1.6; opacity: .92; }
+  .pbody .big { font: 400 32px/1 var(--display); }
+  .pbody .big small { font: 400 11.5px/1.4 var(--mono); letter-spacing: .07em; display: block; text-transform: uppercase; opacity: .75; margin-top: 6px; }
+  .pbody p.myrole { border-left: 2px solid var(--primary); padding-left: .8rem; opacity: 1; }
+  .pbody p.myrole .mono { display: block; opacity: .7; margin-bottom: 2px; }
+  .pmore { margin: 0; padding: 1rem 1.25rem; font-style: italic; opacity: .8; border-top: 1px solid var(--primary); }
+  @media (max-width: 700px) {
+    .pdrop summary { grid-template-columns: 1fr auto 1.4rem; gap: .8rem; }
+    .pdrop .pnum, .pdrop .pstat small { display: none; }
+    .pbody { padding-left: 1.25rem; }
+  }
+
   /* ---------- bridge timeline (by year) ---------- */
   .years { border-bottom: 1px solid var(--ink); }
   .yr-group + .yr-group { border-top: 1px solid var(--ink); }
@@ -478,65 +505,78 @@
     </div>
 
     <div class="sub-bar mono"><span>Highlight projects · Burns</span><span>(05)</span></div>
-    <div class="cards">
-      <article class="wcard rv">
-        <div class="top mono"><span>Ports · EV charging</span><span>#0001/05</span></div>
-        <h3>Port of Oakland Green Power Microgrid</h3>
-        <div class="role">With Moffatt &amp; Nichol</div>
-        <p>The project started as a full seaport microgrid: a 1 MW solar array, 6.5 MW of battery storage, and about 150 heavy-duty EV chargers, backed by a $41.6M state grant.</p>
+    <div class="pdrops">
+      <details class="pdrop rv">
+        <summary>
+          <span class="mono pnum">#0001/05</span>
+          <span class="ptitle"><span class="mono dim">Ports · EV charging</span><b>Port of Oakland Green Power Microgrid</b><i>With Moffatt &amp; Nichol</i></span>
+          <span class="pstat">$52M<small class="mono">Engineer's estimate, EV charging bid package</small></span>
+          <span class="chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="pbody">
+          <p>The project started as a full seaport microgrid: a 1 MW solar array, 6.5 MW of battery storage, and about 150 heavy-duty EV chargers, backed by a $41.6M state grant.</p>
         <p>In later iterations the Port narrowed the scope to EV charging alone. That package went out to bid in December 2025 as 115 heavy-duty chargers across five sites.</p>
         <p class="myrole"><span class="mono">My role</span>Sized and modeled the solar, storage, and charging system, worked on Burns' 30-charger share of the design, and helped coordinate the 30/60/90% design reviews.</p>
-        <div class="big">$52M<small>Engineer's estimate, EV charging bid package</small></div>
         <div class="tags mono"><span>EV charging</span><span>Solar + BESS</span><span>Design reviews</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-to-help-provide-greener-and-more-resilient-power-to-the-port-of-oakland/" target="_blank" rel="noopener">Burns ↗</a><a href="https://www.portofoakland.com/wp-content/uploads/2025/12/4379-AD-COPY-TCEP-Green-Power-Microgrid-Project-EV-Chargers.pdf" target="_blank" rel="noopener">Bid notice ↗</a></div>
-      </article>
-
-      <article class="wcard rv">
-        <div class="top mono"><span>Transit · Electrical safety</span><span>#0002/05</span></div>
-        <h3>NJ Transit Arc Flash Study</h3>
-        <div class="role">River Line</div>
-        <p>This was part of Burns' statewide arc flash hazard analysis and electrical safety program for NJ Transit, which covers more than 200 facilities.</p>
+        </div>
+      </details>
+      <details class="pdrop rv">
+        <summary>
+          <span class="mono pnum">#0002/05</span>
+          <span class="ptitle"><span class="mono dim">Transit · Electrical safety</span><b>NJ Transit Arc Flash Study</b><i>River Line</i></span>
+          <span class="pstat">200+<small class="mono">Facilities in the statewide program</small></span>
+          <span class="chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="pbody">
+          <p>This was part of Burns' statewide arc flash hazard analysis and electrical safety program for NJ Transit, which covers more than 200 facilities.</p>
         <p class="myrole"><span class="mono">My role</span>Made site visits along the River Line, the light rail between Trenton and Camden, to collect equipment data. Built and validated the system model in SKM, then wrote up the findings in the engineering report.</p>
-        <div class="big">200+<small>Facilities in the statewide program</small></div>
         <div class="tags mono"><span>SKM PowerTools</span><span>Arc flash</span><span>Field surveys</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/?p=51933" target="_blank" rel="noopener">Burns ↗</a></div>
-      </article>
-
-      <article class="wcard rv">
-        <div class="top mono"><span>Highways · Lighting</span><span>#0003/05</span></div>
-        <h3>PA Turnpike Wilkes-Barre Lighting</h3>
-        <div class="role">Toll plaza removal</div>
-        <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out, and the interchange lighting had to be redesigned for the new layout.</p>
+        </div>
+      </details>
+      <details class="pdrop rv">
+        <summary>
+          <span class="mono pnum">#0003/05</span>
+          <span class="ptitle"><span class="mono dim">Highways · Lighting</span><b>PA Turnpike Wilkes-Barre Lighting</b><i>Toll plaza removal</i></span>
+          <span class="pstat">~50<small class="mono">Fixtures removed &amp; relocated</small></span>
+          <span class="chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="pbody">
+          <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out, and the interchange lighting had to be redesigned for the new layout.</p>
         <p class="myrole"><span class="mono">My role</span>Removed and relocated about 50 light fixtures for the new layout and checked light levels in AGI32.</p>
-        <div class="big">~50<small>Fixtures removed &amp; relocated</small></div>
         <div class="tags mono"><span>AGI32</span><span>Roadway lighting</span></div>
         <div class="srcs mono"><a href="https://www.fox56.com/news/local/overnight-closure-planned-at-wilkes-barre-interchange-on-turnpike" target="_blank" rel="noopener">Context ↗</a></div>
-      </article>
-
-      <article class="wcard rv">
-        <div class="top mono"><span>Campus · Utilities</span><span>#0004/05</span></div>
-        <h3>Clemson Ductbank Relocation</h3>
-        <div class="role">Clemson University</div>
-        <p>A new pedestrian bridge over Williamson Road, linking a new parking structure to campus, was going to sit right on top of an existing medium-voltage ductbank. Burns designed the relocation of the ductbank along with its medium-voltage circuits and fiber optic cabling, then provided bid-phase support and coordination with the adjacent projects.</p>
+        </div>
+      </details>
+      <details class="pdrop rv">
+        <summary>
+          <span class="mono pnum">#0004/05</span>
+          <span class="ptitle"><span class="mono dim">Campus · Utilities</span><b>Clemson Ductbank Relocation</b><i>Clemson University</i></span>
+          <span class="pstat"></span>
+          <span class="chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="pbody">
+          <p>A new pedestrian bridge over Williamson Road, linking a new parking structure to campus, was going to sit right on top of an existing medium-voltage ductbank. Burns designed the relocation of the ductbank along with its medium-voltage circuits and fiber optic cabling, then provided bid-phase support and coordination with the adjacent projects.</p>
         <p class="myrole"><span class="mono">My role</span>Oversaw the building of the design package. Drew the single-line diagrams and site plans in AutoCAD and compiled the electrical specifications.</p>
         <div class="tags mono"><span>AutoCAD</span><span>MV distribution</span><span>Specifications</span></div>
         <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-continues-to-be-a-trusted-advisor-for-power-and-utilities-projects-at-clemson-university/" target="_blank" rel="noopener">Burns ↗</a></div>
-      </article>
-
-      <article class="wcard rv">
-        <div class="top mono"><span>Energy · Analytics</span><span>#0005/05</span></div>
-        <h3>Cordia Power Study</h3>
-        <div class="role">Utility data analysis &amp; forecasting</div>
-        <p>A review of three years of utility billing to find ways to cut electricity costs. This project is what pushed me toward data science.</p>
+        </div>
+      </details>
+      <details class="pdrop rv">
+        <summary>
+          <span class="mono pnum">#0005/05</span>
+          <span class="ptitle"><span class="mono dim">Energy · Analytics</span><b>Cordia Power Study</b><i>Utility data analysis &amp; forecasting</i></span>
+          <span class="pstat">3 yrs<small class="mono">Of billing data, cleaned and forecast</small></span>
+          <span class="chev" aria-hidden="true">+</span>
+        </summary>
+        <div class="pbody">
+          <p>A review of three years of utility billing to find ways to cut electricity costs. This project is what pushed me toward data science.</p>
         <p class="myrole"><span class="mono">My role</span>Cleaned and validated the billing data, catching errors and anomalous readings, then built the usage trends and forecasts behind the cost-cutting recommendations.</p>
-        <div class="big">3 yrs<small>Of billing data, cleaned and forecast</small></div>
         <div class="tags mono"><span>Excel / VBA</span><span>Forecasting</span></div>
-      </article>
-
-      <article class="wcard more rv">
-        <div class="top mono"><span>And more</span><span>+</span></div>
-        <p>Along with these, I supported a range of other power and utility projects at Burns, mostly in transit, highway, and campus infrastructure.</p>
-      </article>
+        </div>
+      </details>
+      <p class="pmore">Along with these, I supported a range of other power and utility projects at Burns, mostly in transit, highway, and campus infrastructure.</p>
     </div>
 
     <!-- EZSoft -->
