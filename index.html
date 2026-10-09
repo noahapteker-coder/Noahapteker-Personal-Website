@@ -352,6 +352,52 @@
   }
   @media (max-width: 700px) { .tke { grid-template-columns: 1fr; } .tke > div { border-right: 0; border-bottom: 1px solid var(--ink); } .tke > div:last-child { border-bottom: 0; } }
 
+  /* ---------- puzzle ---------- */
+  .pz { display: grid; grid-template-columns: 1.1fr 1fr; border-bottom: 1px solid var(--ink); }
+  .pz-left { padding: 2rem 1.6rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .9rem; }
+  .pz-left h3 { margin: 0; font: 400 clamp(26px, 2.8vw, 38px)/1.1 var(--display); }
+  .pz-left p { margin: 0; font-size: 17px; }
+  .pz-ask { font-weight: 600; }
+  .pz-hand { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pz-card { width: 46px; height: 64px; border: 1px solid var(--ink); border-radius: 6px; background: var(--primary); display: grid; place-items: center; font: 400 20px/1 var(--display); box-shadow: 2px 2px 0 var(--ink); }
+  .pz-card.r { color: var(--red); }
+  .pz-card.hid { background: repeating-linear-gradient(45deg, var(--ink) 0 3px, var(--primary) 3px 7px); }
+  .pz-label { align-self: center; margin-right: 6px; }
+  .pz-opts { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .3rem; }
+  .pz-opt { all: unset; cursor: pointer; border: 1px solid var(--ink); padding: .7rem 1.1rem; font: 400 20px/1 var(--display); transition: background .15s, color .15s; }
+  .pz-opt:hover:not([disabled]), .pz-opt:focus-visible { background: var(--ink); color: var(--primary); }
+  .pz-opt[disabled] { cursor: default; opacity: .45; }
+  .pz-opt.right { opacity: 1; background: var(--ink); color: var(--primary); }
+  .pz-opt.wrong { opacity: 1; text-decoration: line-through; color: var(--red); border-color: var(--red); }
+  .pz-right { padding: 2rem 1.6rem; display: flex; flex-direction: column; }
+  .pz-placeholder { flex: 1; display: grid; place-content: center; text-align: center; gap: .5rem; opacity: .6; min-height: 260px; }
+  .pz-suit { font: 400 96px/1 var(--display); }
+  .pz-reveal { display: flex; flex-direction: column; gap: 1rem; }
+  .pz-verdict { margin: 0; font: 400 26px/1.2 var(--display); }
+  .pz-verdict.no { color: var(--red); }
+  .pz-bars { display: flex; flex-direction: column; gap: .7rem; }
+  .pz-bar { display: grid; grid-template-columns: 7.5rem 1fr 4.2rem; align-items: center; gap: .8rem; }
+  .pz-bar .lbl { font: 400 18px/1.1 var(--display); }
+  .pz-track { position: relative; height: 22px; border: 1px solid var(--ink); }
+  .pz-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); transition: width .6s cubic-bezier(.2,.8,.2,1); }
+  .pz-bar.hl .pz-fill { background: var(--red); }
+  .pz-sim { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--red); left: 0; opacity: 0; transition: left .12s linear; }
+  .pz-bar.hl .pz-sim { background: var(--ink); }
+  .pz.simming .pz-sim, .pz.simmed .pz-sim { opacity: 1; }
+  .pz-bar .pct { text-align: right; font: 500 15px/1 var(--mono); }
+  .pz-bar .simpct { display: block; font-size: 11px; opacity: .65; margin-top: 3px; }
+  .pz-why { margin: 0; font-size: 16.5px; }
+  .pz-math { margin: 0; opacity: .75; text-transform: none; letter-spacing: 0; font-size: 12.5px; line-height: 1.6; }
+  .pz-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .pz-btn { all: unset; cursor: pointer; background: var(--ink); color: var(--primary); padding: .7rem 1.1rem; font: 500 13px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+  .pz-btn:hover, .pz-btn:focus-visible { background: var(--red); }
+  .pz-btn[disabled] { opacity: .5; cursor: default; }
+  .pz-foot { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .8rem 1.25rem; border-top: 1px solid var(--ink); }
+  .pz-next { all: unset; cursor: pointer; border-bottom: 1px solid var(--ink); padding-bottom: 2px; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; }
+  .pz-next:hover { color: var(--red); border-color: var(--red); }
+  @media (max-width: 860px) { .pz { grid-template-columns: 1fr; } .pz-left { border-right: 0; border-bottom: 1px solid var(--ink); } .pz-placeholder { min-height: 140px; } }
+  @media (max-width: 480px) { .pz-bar { grid-template-columns: 5.4rem 1fr 3.6rem; } .pz-card { width: 38px; height: 54px; font-size: 17px; } }
+
   /* ---------- off the clock ---------- */
   .hobbies { display: grid; grid-template-columns: repeat(2, 1fr); }
   .hobby:nth-child(2n) { border-right: 0; }
@@ -765,6 +811,38 @@
     </div>
   </section>
 
+  <!-- ===== puzzle ===== -->
+  <section id="puzzle">
+    <div class="sec-title"><h2>Puzzle</h2><span class="mono">Odds at the table</span></div>
+    <div class="pz" id="pz">
+      <div class="pz-left">
+        <div class="mono dim" id="pz-count">Puzzle 1 of 3</div>
+        <h3 id="pz-title"></h3>
+        <p id="pz-setup"></p>
+        <div class="pz-hand" id="pz-hand" aria-hidden="true"></div>
+        <p class="pz-ask" id="pz-ask"></p>
+        <div class="pz-opts" id="pz-opts" role="group" aria-label="Answer options"></div>
+      </div>
+      <div class="pz-right" id="pz-right">
+        <div class="pz-placeholder" id="pz-placeholder"><span class="pz-suit">?</span><p class="mono">Pick an answer to reveal the odds</p></div>
+        <div class="pz-reveal" id="pz-reveal" hidden>
+          <p class="pz-verdict" id="pz-verdict" aria-live="polite"></p>
+          <div class="pz-bars" id="pz-bars"></div>
+          <p class="pz-why" id="pz-why"></p>
+          <p class="pz-math mono" id="pz-math"></p>
+          <div class="pz-actions">
+            <button class="pz-btn" id="pz-sim" type="button">Deal 10,000 hands ♠</button>
+            <span class="mono dim" id="pz-simcount"></span>
+          </div>
+        </div>
+      </div>
+      <div class="pz-foot">
+        <span class="mono dim">Exact odds from the hypergeometric distribution · simulated deals run in your browser</span>
+        <button class="pz-next mono" id="pz-next" type="button">Next puzzle →</button>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== off the clock ===== -->
   <section id="off">
     <div class="sec-title"><h2>Off the clock</h2><span class="mono">(04)</span></div>
@@ -837,6 +915,136 @@
       }
     }, 180);
   }
+
+
+  // ---------- probability puzzle ----------
+  (function () {
+    const C = (n, k) => { let r = 1; for (let i = 1; i <= k; i++) r = r * (n - k + i) / i; return r; };
+    const T = C(26, 13);
+    const pw = (k, w) => C(k, w) * C(26 - k, 13 - w) / T;   // P(West holds exactly w of the k missing cards)
+    // one random deal: how many of the k missing cards land with West (13 of the 26 unseen cards)
+    const westCount = (k, withQ) => {
+      const deck = Array.from({ length: 26 }, (_, i) => i);
+      let west = 0, qWest = false;
+      for (let i = 0; i < 13; i++) {
+        const j = i + Math.floor(Math.random() * (26 - i));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+        if (deck[i] < k) { west++; if (deck[i] === 0) qWest = true; }
+      }
+      return withQ ? { west, qWest } : west;
+    };
+    const s41 = pw(5, 4) + pw(5, 1), s32 = pw(5, 3) + pw(5, 2);
+    const puzzles = [
+      {
+        title: 'The four missing trumps',
+        setup: 'Between your hand and dummy you hold nine trumps. The opponents hold the other four, split somehow between the two of them.',
+        hand: { label: 'Missing:', cards: ['?', '?', '?', '?'], hidden: true },
+        ask: 'Which split is most likely?',
+        options: ['2–2', '3–1', '4–0'], correct: 1,
+        bars: [['2–2', pw(4, 2)], ['3–1', pw(4, 3) + pw(4, 1)], ['4–0', pw(4, 4) + pw(4, 0)]], hl: 1,
+        why: 'The even split feels natural, but 3–1 wins. There are 8 ways to deal a 3–1 split (any of 4 cards can be the singleton, with either opponent) and only 6 ways to deal a 2–2 split. Each 2–2 layout is slightly more likely on its own, but not enough to close the gap.',
+        math: 'P(2–2) = C(4,2)·C(22,11) / C(26,13) ≈ 40.7%   ·   P(3–1) = 2·C(4,3)·C(22,10) / C(26,13) ≈ 49.7%',
+        sim: () => { const w = westCount(4); return w === 2 ? 0 : (w === 1 || w === 3) ? 1 : 2; }
+      },
+      {
+        title: 'Five out, friendly break?',
+        setup: 'Now you hold eight trumps and the opponents hold five. You can make your contract as long as the trumps split 3–2.',
+        hand: { label: 'Missing:', cards: ['?', '?', '?', '?', '?'], hidden: true },
+        ask: 'Roughly how often will they split 3–2?',
+        options: ['About 50%', 'About 68%', 'About 85%'], correct: 1,
+        bars: [['3–2', s32], ['4–1', s41], ['5–0', pw(5, 5) + pw(5, 0)]], hl: 0,
+        why: 'Odd numbers of missing cards tend to split as evenly as they can. With five out, a 3–2 break happens about two-thirds of the time, which is why bridge players treat it as the expected case and plan for the 4–1 that shows up nearly 3 times in 10.',
+        math: 'P(3–2) = 2·C(5,3)·C(21,10) / C(26,13) ≈ 67.8%   ·   P(4–1) ≈ 28.3%   ·   P(5–0) ≈ 3.9%',
+        sim: () => { const w = westCount(5); return (w === 2 || w === 3) ? 0 : (w === 1 || w === 4) ? 1 : 2; }
+      },
+      {
+        title: 'Finesse or drop?',
+        setup: 'You hold A K J 10 x in dummy opposite x x x in hand: eight trumps, missing the queen and four small cards.',
+        hand: { label: 'Dummy:', cards: ['A♠', 'K♠', 'J♠', '10♠', '5♠'] },
+        ask: 'Cash the ace first, then: finesse the jack, or play the king hoping the queen drops?',
+        options: ['Finesse', 'Play for the drop'], correct: 0,
+        bars: [['Finesse', 0.5 + s41 / 10], ['Drop', s32 * 2 / 5 + s41 / 5]], hl: 0,
+        why: 'The drop only works when the queen started with one or two cards. The finesse works whenever the queen sits in front of dummy, which is half the time, plus the extra cases where cashing the ace drops a singleton queen. Hence the old bridge saying: "eight ever, nine never." With eight cards, always finesse.',
+        math: 'P(finesse) = ½ + P(singleton Q offside) ≈ 52.8%   ·   P(drop) = P(3–2)·⅖ + P(4–1)·⅕ ≈ 32.8%',
+        sim: () => {
+          const { west, qWest } = westCount(5, true);       // Q = card 0; "onside" = West
+          const qLen = qWest ? west : 5 - west;
+          return { hits: [(qWest || qLen === 1) ? 1 : 0, qLen <= 2 ? 1 : 0] };
+        }
+      }
+    ];
+
+    const $ = id => document.getElementById(id);
+    const pz = $('pz');
+    let idx = 0, running = false;
+
+    function render() {
+      const q = puzzles[idx];
+      pz.classList.remove('simming', 'simmed');
+      $('pz-count').textContent = `Puzzle ${idx + 1} of ${puzzles.length}`;
+      $('pz-title').textContent = q.title;
+      $('pz-setup').textContent = q.setup;
+      $('pz-ask').textContent = q.ask;
+      $('pz-hand').innerHTML = `<span class="mono pz-label">${q.hand.label}</span>` + q.hand.cards.map(c =>
+        `<span class="pz-card${q.hand.hidden ? ' hid' : ''}${/[♥♦]/.test(c) ? ' r' : ''}">${q.hand.hidden ? '' : c}</span>`).join('');
+      $('pz-opts').innerHTML = q.options.map((o, i) => `<button class="pz-opt" type="button" data-i="${i}">${o}</button>`).join('');
+      $('pz-placeholder').hidden = false;
+      $('pz-reveal').hidden = true;
+      $('pz-simcount').textContent = '';
+      $('pz-sim').disabled = false;
+      $('pz-bars').innerHTML = q.bars.map(([l, p], i) => `
+        <div class="pz-bar${i === q.hl ? ' hl' : ''}">
+          <span class="lbl">${l}</span>
+          <span class="pz-track"><span class="pz-fill" data-p="${p}"></span><span class="pz-sim"></span></span>
+          <span class="pct">${(p * 100).toFixed(1)}%<span class="simpct"></span></span>
+        </div>`).join('');
+    }
+
+    function answer(i) {
+      const q = puzzles[idx];
+      document.querySelectorAll('.pz-opt').forEach((b, j) => {
+        b.disabled = true;
+        if (j === q.correct) b.classList.add('right');
+        else if (j === i) b.classList.add('wrong');
+      });
+      const ok = i === q.correct;
+      const v = $('pz-verdict');
+      v.textContent = ok ? 'Correct. ' + q.options[q.correct] + '.' : 'Not quite. It’s ' + q.options[q.correct] + '.';
+      v.classList.toggle('no', !ok);
+      $('pz-why').textContent = q.why;
+      $('pz-math').textContent = q.math;
+      $('pz-placeholder').hidden = true;
+      $('pz-reveal').hidden = false;
+      requestAnimationFrame(() => document.querySelectorAll('.pz-fill').forEach(f => f.style.width = (f.dataset.p * 100) + '%'));
+    }
+
+    function simulate() {
+      if (running) return;
+      running = true;
+      const q = puzzles[idx], N = 10000, batch = 400;
+      const counts = new Array(q.bars.length).fill(0);
+      let n = 0;
+      pz.classList.add('simming');
+      $('pz-sim').disabled = true;
+      const sims = [...document.querySelectorAll('.pz-sim')], sp = [...document.querySelectorAll('.simpct')];
+      const step = () => {
+        for (let k = 0; k < batch && n < N; k++, n++) {
+          const r = q.sim();
+          if (typeof r === 'number') counts[r]++; else r.hits.forEach((h, j) => counts[j] += h);
+        }
+        counts.forEach((c, j) => { const f = c / n; sims[j].style.left = `calc(${f * 100}% - 1px)`; sp[j].textContent = `sim ${(f * 100).toFixed(1)}%`; });
+        $('pz-simcount').textContent = `${n.toLocaleString()} deals`;
+        if (n < N) requestAnimationFrame(step);
+        else { running = false; pz.classList.remove('simming'); pz.classList.add('simmed'); $('pz-sim').disabled = false; $('pz-sim').textContent = 'Deal another 10,000 ♠'; }
+      };
+      requestAnimationFrame(step);
+    }
+
+    $('pz-opts').addEventListener('click', e => { const b = e.target.closest('.pz-opt'); if (b && !b.disabled) answer(+b.dataset.i); });
+    $('pz-sim').addEventListener('click', simulate);
+    $('pz-next').addEventListener('click', () => { if (running) return; idx = (idx + 1) % puzzles.length; $('pz-sim').textContent = 'Deal 10,000 hands ♠'; render(); });
+    render();
+  })();
 
   // reveal on scroll
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
