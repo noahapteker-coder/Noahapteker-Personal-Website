@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='white' stroke='%23111318' stroke-width='3'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23111318' text-anchor='middle'%3E%E2%99%A0%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,200;1,6..72,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --primary: #ffffff;      /* card-stock white */
@@ -20,9 +20,9 @@
     --red: #c8102e;          /* hearts & diamonds */
     --cream: #f4f1ea;
     --shadow: #000c3a;
-    --mono: "JetBrains Mono", ui-monospace, monospace;
-    --serif: "Newsreader", Georgia, serif;
-    --display: "Anton", "Impact", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --serif: "Inter", system-ui, -apple-system, sans-serif;
+    --display: "DM Serif Display", Georgia, serif;
   }
   :root[data-theme="contrast"] { --primary: #111318; --ink: #f4f1ea; --red: #ff5a6a; --shadow: #3a3f52; }
 
@@ -31,7 +31,7 @@
   body {
     margin: 0; padding: 1rem; min-height: 100vh;
     background: var(--primary); color: var(--ink);
-    font: 300 18px/1.5 var(--serif); letter-spacing: -.01em;
+    font: 400 16.5px/1.6 var(--serif);
     -webkit-font-smoothing: antialiased;
   }
   ::selection { background: var(--ink); color: var(--primary); }
@@ -39,7 +39,7 @@
   .frame { border: 1px solid var(--ink); }
   @media (max-width: 700px) { body { padding: .5rem; } }
 
-  .mono { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .mono { font: 400 11.5px/1.45 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
 
   /* ---------- head ---------- */
   .head { display: flex; align-items: stretch; height: 5rem; border-bottom: 1px solid var(--ink); }
@@ -91,10 +91,10 @@
     box-shadow: 4px 6px 0 var(--ink);
     transform: translateX(calc(var(--x) * var(--k, 1))) translateY(var(--y)) rotate(var(--r));
     transition: transform .4s cubic-bezier(.2,.8,.2,1);
-    font-family: var(--serif);
+    font-family: var(--display);
   }
   .pc.red { color: var(--red); }
-  .pc i { position: absolute; top: 10px; left: 12px; font: 400 22px/1 var(--serif); font-style: normal; text-align: center; }
+  .pc i { position: absolute; top: 10px; left: 12px; font: 400 22px/1 var(--display); font-style: normal; text-align: center; }
   .pc i.br { top: auto; left: auto; bottom: 10px; right: 12px; transform: rotate(180deg); }
   .pc b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 84px; font-weight: 400; }
   .stage:hover .pc { transform: translateX(calc(var(--x) * var(--k, 1) * 1.12)) translateY(calc(var(--y) - 14px)) rotate(calc(var(--r) * 1.3)); }
@@ -115,16 +115,16 @@
   .hero-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
   .hero-card .cap { display: flex; justify-content: space-between; padding: 8px 10px; border-top: 1px solid var(--ink); }
   .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; padding: 1rem 1.25rem; border-top: 1px solid var(--ink); }
-  .hero-row .tag { font: 300 clamp(20px, 2.4vw, 30px)/1.2 var(--serif); font-style: italic; }
+  .hero-row .tag { font: italic 400 clamp(20px, 2.2vw, 28px)/1.25 var(--display); }
   .hero-row a.cta { text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; white-space: nowrap; }
   .name {
     margin: 0; padding: 1.25rem 0 .9rem; border-top: 1px solid var(--ink);
-    font: 400 min(13.2vw, 15rem)/.82 var(--display); text-transform: uppercase; letter-spacing: -.01em;
+    font: 400 min(9vw, 8.5rem)/1 var(--display); letter-spacing: -.01em;
     text-align: center; white-space: nowrap;
   }
   @media (max-width: 700px) {
     .hero-row { flex-direction: column; align-items: flex-start; }
-    .name { font-size: 25vw; white-space: normal; text-align: left; padding-left: .75rem; }
+    .name { font-size: 17vw; white-space: normal; text-align: left; padding-left: .75rem; line-height: .95; }
   }
 
   /* ---------- marquee ---------- */
@@ -136,20 +136,20 @@
   .about { padding: 9rem 1rem; }
   .box { max-width: 46rem; margin: 0 auto; border: 1px solid var(--ink); background: var(--primary); }
   .box > .title { background: var(--ink); color: var(--primary); text-align: center; padding: 4px 0; font-weight: 700; }
-  .box .content { padding: 3.5rem 4rem; font: 300 1.8rem/1.45 var(--serif); }
+  .box .content { padding: 3rem 3.5rem; font: 400 1.25rem/1.65 var(--serif); }
   .box .content p { margin: 0 0 1.2em; }
   .box .content p:last-child { margin: 0; }
-  .box .content b { font-weight: 400; }
+  .box .content b { font-weight: 600; }
   .box .content a { text-decoration: none; border-bottom: 1px solid currentColor; }
   .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
   .facts > * { padding: 1rem 1.2rem; border-right: 1px solid var(--ink); }
   .facts > *:last-child { border-right: 0; }
   .fact-link { text-decoration: none; transition: background .2s, color .2s; }
   .fact-link:hover { background: var(--ink); color: var(--primary); }
-  .facts b { display: block; font: 400 2rem/1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
+  .facts b { display: block; font: 400 1.6rem/1.1 var(--display); text-transform: none; letter-spacing: 0; margin-bottom: 6px; }
   @media (max-width: 700px) {
     .about { padding: 4rem 0; }
-    .box .content { padding: 2rem 1.4rem; font-size: 1.35rem; }
+    .box .content { padding: 1.8rem 1.3rem; font-size: 1.05rem; }
     .facts { grid-template-columns: 1fr; }
     .facts > * { border-right: 0; border-bottom: 1px solid var(--ink); }
   }
@@ -159,7 +159,7 @@
     display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
     border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 1rem 1.25rem .6rem;
   }
-  .sec-title h2 { margin: 0; font: 400 clamp(64px, 12vw, 190px)/.85 var(--display); text-transform: uppercase; letter-spacing: -.01em; }
+  .sec-title h2 { margin: 0; font: 400 clamp(36px, 5vw, 68px)/1.05 var(--display); letter-spacing: -.01em; }
 
   /* ---------- work (dark panel) ---------- */
   .work { background: var(--ink); color: var(--primary); }
@@ -180,7 +180,7 @@
   .job { display: grid; grid-template-columns: 15rem 1fr; border-bottom: 1px solid var(--primary); }
   .job .side { padding: 1.6rem 1.25rem; border-right: 1px solid var(--primary); display: flex; flex-direction: column; gap: .4rem; }
   .job .main { padding: 1.6rem 1.6rem 2rem; max-width: 60rem; display: flex; flex-direction: column; gap: .7rem; }
-  .job h3 { margin: 0; font: 400 clamp(34px, 4vw, 56px)/1 var(--display); text-transform: uppercase; }
+  .job h3 { margin: 0; font: 400 clamp(26px, 2.6vw, 36px)/1.1 var(--display); }
   .job p { margin: 0; font-size: 18px; }
   .job p b { font-weight: 400; font-style: italic; }
   .dim { opacity: .75; }
@@ -188,10 +188,10 @@
   .job .srcs { margin-top: .2rem; }
   @media (max-width: 800px) { .job { grid-template-columns: 1fr; } .job .side { border-right: 0; border-bottom: 1px solid var(--primary); flex-direction: row; justify-content: space-between; padding: .8rem 1.25rem; } }
   .wcard .top { display: flex; justify-content: space-between; gap: 1rem; opacity: .75; }
-  .wcard h3 { margin: 0; font: 400 clamp(30px, 3.4vw, 48px)/1 var(--display); text-transform: uppercase; }
+  .wcard h3 { margin: 0; font: 400 clamp(22px, 2.1vw, 30px)/1.15 var(--display); }
   .wcard .role { font-style: italic; font-size: 20px; }
   .wcard p { margin: 0; font-size: 17px; line-height: 1.55; opacity: .9; }
-  .wcard .big { font: 400 clamp(40px, 5vw, 72px)/1 var(--display); margin-top: auto; }
+  .wcard .big { font: 400 clamp(32px, 3.4vw, 48px)/1 var(--display); margin-top: auto; }
   .wcard .big small { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; display: block; text-transform: uppercase; opacity: .75; margin-top: 6px; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
   .tags span { border: 1px solid currentColor; padding: 3px 8px; }
@@ -203,9 +203,9 @@
   .bridge-lede { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink); }
   .bridge-lede > div { padding: 2rem 1.6rem; }
   .bridge-lede > div + div { border-left: 1px solid var(--ink); }
-  .bridge-lede .stat { font: 400 clamp(56px, 8vw, 120px)/.9 var(--display); text-transform: uppercase; }
+  .bridge-lede .stat { font: 400 clamp(38px, 4.5vw, 64px)/1 var(--display); }
   .bridge-lede p { font-size: 22px; margin: 0 0 1rem; }
-  .bridge-lede blockquote { margin: 1.5rem 0 0; font: italic 300 30px/1.3 var(--serif); }
+  .bridge-lede blockquote { margin: 1.5rem 0 0; font: italic 400 26px/1.3 var(--display); }
   .bridge-lede cite { display: block; font-style: normal; margin-top: .6rem; }
   @media (max-width: 800px) { .bridge-lede { grid-template-columns: 1fr; } .bridge-lede > div + div { border-left: 0; border-top: 1px solid var(--ink); } }
 
@@ -215,8 +215,8 @@
     padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--ink); transition: background .2s, color .2s;
   }
   .results li:hover { background: var(--ink); color: var(--primary); }
-  .results .yr { font: 400 34px/1 var(--display); }
-  .results h4 { margin: 0; font: 400 24px/1.25 var(--serif); }
+  .results .yr { font: 400 28px/1 var(--display); }
+  .results h4 { margin: 0; font: 400 21px/1.3 var(--display); }
   .results p { margin: 4px 0 0; font-size: 16px; opacity: .85; }
   .results a.src { text-decoration: none; text-align: right; font-size: 20px; }
   @media (max-width: 700px) { .results li { grid-template-columns: 4rem 1fr; } .results a.src { grid-column: 2; text-align: left; font-size: 12px; } }
@@ -228,7 +228,7 @@
   }
   .press a:nth-child(3n) { border-right: 0; }
   .press a:hover { background: var(--ink); color: var(--primary); }
-  .press .t { font: 400 22px/1.2 var(--serif); }
+  .press .t { font: 400 20px/1.25 var(--display); }
   .press .d { font-size: 15px; opacity: .8; margin-top: auto; }
   @media (max-width: 900px) { .press { grid-template-columns: 1fr 1fr; } .press a:nth-child(3n) { border-right: 1px solid var(--ink); } .press a:nth-child(2n) { border-right: 0; } }
   @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
@@ -241,12 +241,34 @@
   @media (max-width: 1000px) { .bridge-lede.three { grid-template-columns: 1fr 1fr; } .bridge-lede.three .lede-photo { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); } .lede-photo img { max-height: 520px; } }
   @media (max-width: 800px) { .bridge-lede.three { grid-template-columns: 1fr; } }
 
+  /* ---------- bridge timeline (by year) ---------- */
+  .years { border-bottom: 1px solid var(--ink); }
+  .yr-group + .yr-group { border-top: 1px solid var(--ink); }
+  .yr-group summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 6rem 1fr auto 2rem; align-items: baseline; gap: 1rem; padding: 1.1rem 1.25rem; transition: background .2s, color .2s; }
+  .yr-group summary::-webkit-details-marker { display: none; }
+  .yr-group summary:hover { background: var(--ink); color: var(--primary); }
+  .yr-group .yr { font: 400 28px/1 var(--display); }
+  .yr-group .hl { font: 400 20px/1.3 var(--display); }
+  .yr-group .more { opacity: .7; white-space: nowrap; }
+  .yr-group .chev { font: 400 24px/1 var(--display); text-align: right; transition: transform .25s; }
+  .yr-group[open] .chev { transform: rotate(45deg); }
+  .yr-group ul { list-style: none; margin: 0; padding: 0 1.25rem 1rem calc(6rem + 2.25rem); }
+  .yr-group li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .7rem 0; border-top: 1px dashed color-mix(in srgb, var(--ink) 35%, transparent); }
+  .yr-group li h4 { margin: 0; font: 500 16px/1.4 var(--serif); }
+  .yr-group li p { margin: 3px 0 0; font-size: 15px; opacity: .8; }
+  .yr-group li a.src { text-decoration: none; font-size: 18px; }
+  @media (max-width: 700px) {
+    .yr-group summary { grid-template-columns: 3.6rem 1fr 1.4rem; }
+    .yr-group .more { display: none; }
+    .yr-group ul { padding-left: 1.25rem; }
+  }
+
   /* ---------- featured hand ---------- */
   .feature { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 1px solid var(--ink); }
   .feature > * { margin: 0; border-right: 1px solid var(--ink); min-width: 0; }
   .feature > *:last-child { border-right: 0; }
   .f-text { padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: .9rem; }
-  .f-text h3 { margin: 0; font: 400 clamp(36px, 4vw, 60px)/1 var(--display); text-transform: uppercase; }
+  .f-text h3 { margin: 0; font: 400 clamp(26px, 2.8vw, 40px)/1.1 var(--display); }
   .f-text p { margin: 0; font-size: 18px; }
   .f-text b { font-weight: 400; font-style: italic; }
   .f-clip { display: flex; flex-direction: column; background: var(--primary); }
@@ -265,7 +287,7 @@
   .proj:last-child { border-right: 0; }
   .proj .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
   .proj .top .badge { margin-top: 0; }
-  .proj h3 { margin: 0; font: 400 clamp(36px, 4vw, 60px)/1 var(--display); text-transform: uppercase; }
+  .proj h3 { margin: 0; font: 400 clamp(26px, 2.8vw, 40px)/1.1 var(--display); }
   .proj .role { font-style: italic; font-size: 18px; }
   .proj p { margin: 0; font-size: 17.5px; }
   .proj p b, .proj li b { font-weight: 400; font-style: italic; }
@@ -277,14 +299,12 @@
   @media (max-width: 860px) { .projects { grid-template-columns: 1fr; } .proj { border-right: 0; } }
 
   /* ---------- skills ---------- */
-  .tools { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .tool { padding: 1.4rem 1.4rem 1.6rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; transition: background .2s, color .2s; }
-  .tool:nth-child(3n) { border-right: 0; }
-  .tool:hover { background: var(--ink); color: var(--primary); }
-  .tool b { font: 400 clamp(40px, 5vw, 72px)/.95 var(--display); text-transform: uppercase; font-weight: 400; }
-  .tool .mono:last-child { line-height: 1.6; }
-  @media (max-width: 900px) { .tools { grid-template-columns: 1fr 1fr; } .tool:nth-child(3n) { border-right: 1px solid var(--ink); } .tool:nth-child(2n) { border-right: 0; } }
-  @media (max-width: 560px) { .tools { grid-template-columns: 1fr; } .tool { border-right: 0 !important; } }
+  .skill-list { display: grid; grid-template-columns: 14rem 1fr; margin: 0; border-bottom: 1px solid var(--ink); }
+  .skill-list dt, .skill-list dd { margin: 0; padding: 1rem 1.25rem; border-bottom: 1px solid var(--ink); }
+  .skill-list dt { border-right: 1px solid var(--ink); display: flex; align-items: center; }
+  .skill-list dd { font-size: 17px; }
+  .skill-list dt:nth-last-of-type(1), .skill-list dd:last-child { border-bottom: 0; }
+  @media (max-width: 640px) { .skill-list { grid-template-columns: 1fr; } .skill-list dt { border-right: 0; border-bottom: 0; padding-bottom: 0; } }
 
   /* ---------- leadership ---------- */
   .tke-mark { display: flex; align-items: center; gap: .9rem; text-align: right; }
@@ -293,7 +313,7 @@
   .tke { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); }
   .tke > div { padding: 1.6rem 1.4rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; }
   .tke > div:last-child { border-right: 0; }
-  .tke b { font: 400 clamp(48px, 6vw, 88px)/.9 var(--display); font-weight: 400; }
+  .tke b { font: 400 clamp(36px, 4vw, 56px)/1 var(--display); font-weight: 400; }
   .tke-note { margin: 0; padding: 1.4rem 1.25rem; font-size: 20px; font-style: italic; border-bottom: 1px solid var(--ink); }
   .gallery { display: grid; border-bottom: 1px solid var(--ink); }
   .gallery figure { margin: 0; display: flex; flex-direction: column; border-right: 1px solid var(--ink); overflow: hidden; }
@@ -323,7 +343,7 @@
   .hobby { padding: 1.6rem 1.4rem 2rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .8rem; }
   .hobby:last-child { border-right: 0; }
   .hobby .suit { font-size: 42px; line-height: 1; }
-  .hobby h3 { margin: 0; font: 400 34px/1 var(--display); text-transform: uppercase; }
+  .hobby h3 { margin: 0; font: 400 28px/1.1 var(--display); }
   .hobby p { margin: 0; font-size: 17px; }
   @media (max-width: 900px) { .hobbies { grid-template-columns: 1fr; } .hobby { border-right: 0; } }
   @media (max-width: 600px) { .hobbies { grid-template-columns: 1fr; } .hobby { border-right: 0; } }
@@ -331,7 +351,7 @@
   /* ---------- cta ---------- */
   .cta-wrap { padding: 7rem 1rem 5rem; text-align: center; border-top: 1px solid var(--ink); }
   .cta-big {
-    display: inline-block; text-decoration: none; font: 400 clamp(72px, 17vw, 280px)/.85 var(--display); text-transform: uppercase;
+    display: inline-block; text-decoration: none; font: 400 clamp(52px, 9vw, 140px)/1 var(--display);
     transition: transform .3s;
   }
   .cta-big:hover { transform: skewX(-6deg); }
@@ -533,25 +553,11 @@
 
   <!-- ===== skills ===== -->
   <section id="skills">
-    <div class="sec-title"><h2>Skills</h2><span class="mono">(06 + 06)</span></div>
-    <div class="sub-bar mono"><span>Engineering software</span><span>(06)</span></div>
-    <div class="tools">
-      <div class="tool rv"><span class="mono dim">01</span><b>AutoCAD</b><span class="mono">Drafting · single-line diagrams &amp; site plans<br>Used on: Clemson ductbank</span></div>
-      <div class="tool rv"><span class="mono dim">02</span><b>Revit</b><span class="mono">BIM · electrical building design</span></div>
-      <div class="tool rv"><span class="mono dim">03</span><b>SKM</b><span class="mono">Power system studies · arc flash<br>Used on: NJ Transit River Line</span></div>
-      <div class="tool rv"><span class="mono dim">04</span><b>AGI32</b><span class="mono">Lighting design &amp; photometrics<br>Used on: PA Turnpike Wilkes-Barre</span></div>
-      <div class="tool rv"><span class="mono dim">05</span><b>EasyPower</b><span class="mono">Power system analysis · arc flash</span></div>
-      <div class="tool rv"><span class="mono dim">06</span><b>ETAP</b><span class="mono">Power system modeling &amp; simulation</span></div>
-    </div>
-    <div class="sub-bar mono"><span>Programming &amp; data</span><span>(06)</span></div>
-    <div class="tools">
-      <div class="tool rv"><span class="mono dim">01</span><b>Python</b><span class="mono">Data pipelines · statistical modeling<br>Used on: Bayesian research</span></div>
-      <div class="tool rv"><span class="mono dim">02</span><b>R</b><span class="mono">Statistics &amp; data analysis<br>Certified: Harvard Data Science · R Basics</span></div>
-      <div class="tool rv"><span class="mono dim">03</span><b>SQL</b><span class="mono">Querying &amp; data management</span></div>
-      <div class="tool rv"><span class="mono dim">04</span><b>MATLAB</b><span class="mono">Numerical computing · signals &amp; systems</span></div>
-      <div class="tool rv"><span class="mono dim">05</span><b>C</b><span class="mono">Low-level programming</span></div>
-      <div class="tool rv"><span class="mono dim">06</span><b>Excel / VBA</b><span class="mono">Data cleaning · forecasting<br>Used on: Cordia power study</span></div>
-    </div>
+    <div class="sec-title"><h2>Skills</h2></div>
+    <dl class="skill-list">
+      <dt class="mono">Engineering software</dt><dd>AutoCAD · Revit · SKM · AGI32 · EasyPower · ETAP</dd>
+      <dt class="mono">Programming &amp; data</dt><dd>Python · R (Harvard certified) · SQL · MATLAB · C · Excel / VBA</dd>
+    </dl>
   </section>
 
   <!-- ===== leadership ===== -->
@@ -626,18 +632,53 @@
       <figure class="f-clip rv"><a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener"><img src="assets/bridge/fast-learner.jpg" alt="Daily bulletin article 'Fast learner' by Brent Manley describing Noah's double squeeze" loading="lazy"></a><figcaption class="mono">"Fast learner" · Brent Manley, daily bulletin</figcaption></figure>
     </div>
 
-    <ul class="results">
-      <li class="rv"><span class="yr">2025</span><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2025</span><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2024</span><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2023</span><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2021</span><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2021</span><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2019</span><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2018</span><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2017</span><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2017</span><div><h4>England, Under-26: World Youth Teams Championships</h4></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-    </ul>
+    <div class="years">
+      <details class="yr-group rv">
+        <summary><span class="yr">2025</span><span class="hl">South Africa, Open Teams: WBF World Championships</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2024</span><span class="hl">Represented South Africa: World Bridge Games</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2023</span><span class="hl">USA1, Under-26: World Youth Team Championships</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2021</span><span class="hl">Winner, Swedish Chairman's Cup</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2019</span><span class="hl">SA National Teams (defended) · SA National Pairs runner-up</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2018</span><span class="hl">SA National Teams champion: youngest ever</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2017</span><span class="hl">Shortlisted: IBPA Richard Freeman Junior Deal of the Year</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>England, Under-26: World Youth Teams Championships</h4></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </details>
+    </div>
 
     <div class="sub-bar mono"><span>In the press</span><span>(11)</span></div>
     <div class="press">
