@@ -231,6 +231,10 @@
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
 
   /* ---------- leadership ---------- */
+  .tke-mark { display: flex; align-items: center; gap: .9rem; text-align: right; }
+  .tke-mark img { width: clamp(56px, 7vw, 96px); height: auto; }
+  :root[data-theme="contrast"] .tke-mark img { filter: invert(1); }
+  @media (max-width: 700px) { .tke-mark .mono { display: none; } .tke-mark img { width: 52px; } }
   .tke { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); }
   .tke > div { padding: 1.6rem 1.4rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; }
   .tke > div:last-child { border-right: 0; }
@@ -445,7 +449,7 @@
 
   <!-- ===== leadership ===== -->
   <section id="leadership">
-    <div class="sec-title"><h2>Leadership</h2><span class="mono">ΤΚΕ · Drexel</span></div>
+    <div class="sec-title"><h2>Leadership</h2><span class="tke-mark"><img src="assets/tke/tke-logo.png" alt="Tau Kappa Epsilon"><span class="mono">Tau Kappa Epsilon<br>Drexel University</span></span></div>
 
     <div class="bridge-lede">
       <div class="rv">
@@ -569,7 +573,7 @@
   });
 
   // marquee
-  const words = ['Data Science', '♠', 'Electrical Engineering', '♥', 'Quantitative Finance', '♦', 'Bayesian Modeling', '♣', 'International Bridge', '♠', 'Johannesburg → NYC', '♥'];
+  const words = ['Data Science', '♠', 'Electrical Engineering', '♥', 'Quantitative Finance', '♦', 'Bayesian Modeling', '♣', 'International Bridge', '♠', 'Johannesburg → Philadelphia → NYC', '♥'];
   const mq = document.getElementById('mq');
   mq.innerHTML = [...words, ...words].map(w => `<span${'♥♦'.includes(w) ? ' class="r"' : ''}>${w}</span>`).join('');
 
