@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noah Apteker</title>
+<meta name="description" content="Noah Apteker — Columbia MS Data Science student, former electrical engineer, international bridge player, heading toward quantitative finance.">
+<meta property="og:title" content="Noah Apteker">
+<meta property="og:description" content="Engineering → Data → Markets. Columbia MSDS, former electrical engineer, international bridge player.">
+<meta property="og:image" content="https://noahapteker.com/assets/headshot.jpeg">
+<meta property="og:url" content="https://noahapteker.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='white' stroke='%23111318' stroke-width='3'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23111318' text-anchor='middle'%3E%E2%99%A0%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;1,6..72,200;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #ffffff;      /* card-stock white */
+    --ink: #111318;          /* near-black */
+    --red: #c8102e;          /* hearts & diamonds */
+    --cream: #f4f1ea;
+    --shadow: #000c3a;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --serif: "Newsreader", Georgia, serif;
+    --display: "Anton", "Impact", sans-serif;
+  }
+  :root[data-theme="contrast"] { --primary: #111318; --ink: #f4f1ea; --red: #ff5a6a; --shadow: #3a3f52; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; padding: 1rem; min-height: 100vh;
+    background: var(--primary); color: var(--ink);
+    font: 300 18px/1.5 var(--serif); letter-spacing: -.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--ink); color: var(--primary); }
+  a { color: inherit; }
+  .frame { border: 1px solid var(--ink); }
+  @media (max-width: 700px) { body { padding: .5rem; } }
+
+  .mono { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+  /* ---------- head ---------- */
+  .head { display: flex; align-items: stretch; height: 5rem; border-bottom: 1px solid var(--ink); }
+  .head .logo {
+    width: 5rem; display: grid; place-items: center; border-right: 1px solid var(--ink);
+    font-size: 2.2rem; text-decoration: none; line-height: 1;
+  }
+  .head .console { padding: 1rem 1.25rem; display: flex; flex-direction: column; justify-content: flex-end; font-size: 9px; line-height: 1.5; }
+  .head nav { margin-left: auto; display: flex; align-items: stretch; border-left: 1px solid var(--ink); }
+  .head nav a {
+    display: flex; align-items: center; padding: 0 1.25rem; text-decoration: none;
+    border-right: 1px solid var(--ink); transition: background .2s, color .2s;
+  }
+  .head nav a:hover { background: var(--ink); color: var(--primary); }
+  .head button {
+    all: unset; cursor: pointer; width: 5rem; display: grid; place-items: center;
+  }
+  .head button span {
+    width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--ink);
+    background: linear-gradient(90deg, var(--ink) 50%, transparent 50%);
+    transition: transform .4s;
+  }
+  :root[data-theme="contrast"] .head button span { transform: rotate(180deg); }
+  @media (max-width: 860px) { .head .console { display: none; } }
+  @media (max-width: 600px) {
+    .head { height: 3.5rem; }
+    .head .logo, .head button { width: 3.5rem; }
+    .head nav a { padding: 0 .7rem; font-size: 10px; }
+    .head nav a.hide-sm { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; min-height: calc(100svh - 7rem); display: flex; flex-direction: column; overflow: hidden; }
+  .stage { flex: 1; position: relative; min-height: 520px; display: flex; }
+  .suits {
+    flex: 1; position: relative;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); align-content: center;
+    font: 400 18px/34px var(--mono); text-align: center; user-select: none; overflow: hidden;
+  }
+  .suits span { opacity: .14; transition: opacity .6s; }
+  .suits span.on { opacity: .9; }
+  .suits span.r, .r { color: var(--red); }
+
+  /* fanned hand of cards behind the profile card */
+  .fan { position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 1; }
+  .pc {
+    position: absolute; width: 180px; height: 252px; left: -90px; top: -126px;
+    background: var(--primary); border: 1px solid var(--ink); border-radius: 12px;
+    box-shadow: 4px 6px 0 var(--ink);
+    transform: translateX(calc(var(--x) * var(--k, 1))) translateY(var(--y)) rotate(var(--r));
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    font-family: var(--serif);
+  }
+  .pc.red { color: var(--red); }
+  .pc i { position: absolute; top: 10px; left: 12px; font: 400 22px/1 var(--serif); font-style: normal; text-align: center; }
+  .pc i.br { top: auto; left: auto; bottom: 10px; right: 12px; transform: rotate(180deg); }
+  .pc b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 84px; font-weight: 400; }
+  .stage:hover .pc { transform: translateX(calc(var(--x) * var(--k, 1) * 1.12)) translateY(calc(var(--y) - 14px)) rotate(calc(var(--r) * 1.3)); }
+  @media (max-width: 700px) {
+    .pc { width: 120px; height: 168px; left: -60px; top: -84px; }
+    .pc b { font-size: 56px; }
+    .pc i { font-size: 16px; }
+    .pc.outer { display: none; }
+    .fan { --k: .7; }
+    .hero-card { width: min(220px, 52vw); }
+  }
+  .hero-card {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: min(300px, 64vw); border: 1px solid var(--ink); background: var(--primary);
+    box-shadow: 10px 10px 0 var(--ink); z-index: 2; border-radius: 4px; overflow: hidden;
+  }
+  .hero-card .bar { background: var(--ink); color: var(--primary); text-align: center; padding: 3px 0; }
+  .hero-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .hero-card .cap { display: flex; justify-content: space-between; padding: 8px 10px; border-top: 1px solid var(--ink); }
+  .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; padding: 1rem 1.25rem; border-top: 1px solid var(--ink); }
+  .hero-row .tag { font: 300 clamp(20px, 2.4vw, 30px)/1.2 var(--serif); font-style: italic; }
+  .hero-row a.cta { text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; white-space: nowrap; }
+  .name {
+    margin: 0; padding: 1.25rem 0 .9rem; border-top: 1px solid var(--ink);
+    font: 400 min(13.2vw, 15rem)/.82 var(--display); text-transform: uppercase; letter-spacing: -.01em;
+    text-align: center; white-space: nowrap;
+  }
+  @media (max-width: 700px) {
+    .hero-row { flex-direction: column; align-items: flex-start; }
+    .name { font-size: 25vw; white-space: normal; text-align: left; padding-left: .75rem; }
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); overflow: hidden; background: var(--ink); color: var(--primary); }
+  .marquee div { display: inline-flex; gap: 2.5rem; padding: .7rem 0; white-space: nowrap; animation: slide 40s linear infinite; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- about box ---------- */
+  .about { padding: 9rem 1rem; }
+  .box { max-width: 46rem; margin: 0 auto; border: 1px solid var(--ink); background: var(--primary); }
+  .box > .title { background: var(--ink); color: var(--primary); text-align: center; padding: 4px 0; font-weight: 700; }
+  .box .content { padding: 3.5rem 4rem; font: 300 1.8rem/1.45 var(--serif); }
+  .box .content p { margin: 0 0 1.2em; }
+  .box .content p:last-child { margin: 0; }
+  .box .content b { font-weight: 400; }
+  .box .content a { text-decoration: none; border-bottom: 1px solid currentColor; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+  .facts div { padding: 1rem 1.2rem; border-right: 1px solid var(--ink); }
+  .facts div:last-child { border-right: 0; }
+  .facts b { display: block; font: 400 2rem/1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
+  @media (max-width: 700px) {
+    .about { padding: 4rem 0; }
+    .box .content { padding: 2rem 1.4rem; font-size: 1.35rem; }
+    .facts { grid-template-columns: 1fr; }
+    .facts div { border-right: 0; border-bottom: 1px solid var(--ink); }
+  }
+
+  /* ---------- section headers ---------- */
+  .sec-title {
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 1rem 1.25rem .6rem;
+  }
+  .sec-title h2 { margin: 0; font: 400 clamp(64px, 12vw, 190px)/.85 var(--display); text-transform: uppercase; letter-spacing: -.01em; }
+
+  /* ---------- work (dark panel) ---------- */
+  .work { background: var(--ink); color: var(--primary); }
+  .work .sec-title { border-color: var(--primary); }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .wcard { border-right: 1px solid var(--primary); border-bottom: 1px solid var(--primary); padding: 1.6rem 1.6rem 2rem; display: flex; flex-direction: column; gap: .9rem; min-height: 340px; }
+  .wcard:nth-child(3n) { border-right: 0; }
+  .wcard p + p { margin-top: -.3rem; }
+  .wcard.more { justify-content: center; min-height: 0; }
+  .wcard.more p { font-size: 20px; font-style: italic; }
+  .srcs { display: flex; gap: 1rem; opacity: .75; }
+  .srcs a { text-decoration: none; border-bottom: 1px solid currentColor; }
+  .srcs a:hover { opacity: 1; }
+  .work .sub-bar { border-color: var(--primary); border-top: 1px solid var(--primary); }
+
+  .job { display: grid; grid-template-columns: 15rem 1fr; border-bottom: 1px solid var(--primary); }
+  .job .side { padding: 1.6rem 1.25rem; border-right: 1px solid var(--primary); display: flex; flex-direction: column; gap: .4rem; }
+  .job .main { padding: 1.6rem 1.6rem 2rem; max-width: 60rem; display: flex; flex-direction: column; gap: .7rem; }
+  .job h3 { margin: 0; font: 400 clamp(34px, 4vw, 56px)/1 var(--display); text-transform: uppercase; }
+  .job p { margin: 0; font-size: 18px; }
+  .job p b { font-weight: 400; font-style: italic; }
+  .dim { opacity: .75; }
+  @media (max-width: 800px) { .job { grid-template-columns: 1fr; } .job .side { border-right: 0; border-bottom: 1px solid var(--primary); flex-direction: row; justify-content: space-between; padding: .8rem 1.25rem; } }
+  .wcard .top { display: flex; justify-content: space-between; gap: 1rem; opacity: .75; }
+  .wcard h3 { margin: 0; font: 400 clamp(30px, 3.4vw, 48px)/1 var(--display); text-transform: uppercase; }
+  .wcard .role { font-style: italic; font-size: 20px; }
+  .wcard p { margin: 0; font-size: 17px; line-height: 1.55; opacity: .9; }
+  .wcard .big { font: 400 clamp(40px, 5vw, 72px)/1 var(--display); margin-top: auto; }
+  .wcard .big small { font: 400 12px/1.4 var(--mono); letter-spacing: .08em; display: block; text-transform: uppercase; opacity: .75; margin-top: 6px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .tags span { border: 1px solid currentColor; padding: 3px 8px; }
+  .wcard .big + .tags { margin-top: 0; }
+  @media (max-width: 1100px) { .cards { grid-template-columns: 1fr 1fr; } .wcard:nth-child(3n) { border-right: 1px solid var(--primary); } .wcard:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } .wcard { border-right: 0 !important; min-height: 0; } }
+
+  /* ---------- bridge ---------- */
+  .bridge-lede { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--ink); }
+  .bridge-lede > div { padding: 2rem 1.6rem; }
+  .bridge-lede > div + div { border-left: 1px solid var(--ink); }
+  .bridge-lede .stat { font: 400 clamp(56px, 8vw, 120px)/.9 var(--display); text-transform: uppercase; }
+  .bridge-lede p { font-size: 22px; margin: 0 0 1rem; }
+  .bridge-lede blockquote { margin: 1.5rem 0 0; font: italic 300 30px/1.3 var(--serif); }
+  .bridge-lede cite { display: block; font-style: normal; margin-top: .6rem; }
+  @media (max-width: 800px) { .bridge-lede { grid-template-columns: 1fr; } .bridge-lede > div + div { border-left: 0; border-top: 1px solid var(--ink); } }
+
+  .results { list-style: none; margin: 0; padding: 0; }
+  .results li {
+    display: grid; grid-template-columns: 7rem 1fr 3rem; align-items: baseline; gap: 1rem;
+    padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--ink); transition: background .2s, color .2s;
+  }
+  .results li:hover { background: var(--ink); color: var(--primary); }
+  .results .yr { font: 400 34px/1 var(--display); }
+  .results h4 { margin: 0; font: 400 24px/1.25 var(--serif); }
+  .results p { margin: 4px 0 0; font-size: 16px; opacity: .85; }
+  .results a.src { text-decoration: none; text-align: right; font-size: 20px; }
+  @media (max-width: 700px) { .results li { grid-template-columns: 4rem 1fr; } .results a.src { grid-column: 2; text-align: left; font-size: 12px; } }
+
+  .press { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .press a {
+    display: flex; flex-direction: column; gap: .5rem; padding: 1.25rem; min-height: 170px; text-decoration: none;
+    border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); transition: background .2s, color .2s;
+  }
+  .press a:nth-child(3n) { border-right: 0; }
+  .press a:hover { background: var(--ink); color: var(--primary); }
+  .press .t { font: 400 22px/1.2 var(--serif); }
+  .press .d { font-size: 15px; opacity: .8; margin-top: auto; }
+  @media (max-width: 900px) { .press { grid-template-columns: 1fr 1fr; } .press a:nth-child(3n) { border-right: 1px solid var(--ink); } .press a:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
+  .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
+
+  /* ---------- off the clock ---------- */
+  .hobbies { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .hobby { padding: 1.6rem 1.4rem 2rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .8rem; }
+  .hobby:last-child { border-right: 0; }
+  .hobby .suit { font-size: 42px; line-height: 1; }
+  .hobby h3 { margin: 0; font: 400 34px/1 var(--display); text-transform: uppercase; }
+  .hobby p { margin: 0; font-size: 17px; }
+  @media (max-width: 1000px) { .hobbies { grid-template-columns: 1fr 1fr; } .hobby:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 600px) { .hobbies { grid-template-columns: 1fr; } .hobby { border-right: 0; } }
+
+  /* ---------- cta ---------- */
+  .cta-wrap { padding: 7rem 1rem 5rem; text-align: center; border-top: 1px solid var(--ink); }
+  .cta-big {
+    display: inline-block; text-decoration: none; font: 400 clamp(72px, 17vw, 280px)/.85 var(--display); text-transform: uppercase;
+    transition: transform .3s;
+  }
+  .cta-big:hover { transform: skewX(-6deg); }
+  .cta-sub { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .cta-sub a { text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 1rem 1.25rem; border-top: 1px solid var(--ink); }
+
+  /* reveal */
+  .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s, transform .8s; }
+  .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .rv { opacity: 1; transform: none; }
+    .marquee div { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- ===== head ===== -->
+  <header class="head">
+    <a class="logo" href="#top" aria-label="Top">♠</a>
+    <div class="console mono" id="console">NOAH APTEKER<br>40.8075° N, 73.9626° W<br>COLUMBIA MSDS '27</div>
+    <nav class="mono" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#bridge">Bridge</a>
+      <a href="#contact" class="hide-sm">Contact</a>
+    </nav>
+    <button id="theme" aria-label="Change contrast" title="Change contrast"><span></span></button>
+  </header>
+
+  <!-- ===== hero ===== -->
+  <section class="hero" id="top">
+    <div class="stage">
+    <div class="suits" id="suits" aria-hidden="true"></div>
+    <div class="fan" aria-hidden="true">
+      <div class="pc outer" style="--x:-330px;--y:40px;--r:-14deg"><i>A<br>♠</i><b>♠</b><i class="br">A<br>♠</i></div>
+      <div class="pc red" style="--x:-215px;--y:4px;--r:-6deg"><i>K<br>♥</i><b>♥</b><i class="br">K<br>♥</i></div>
+      <div class="pc red" style="--x:215px;--y:4px;--r:6deg"><i>Q<br>♦</i><b>♦</b><i class="br">Q<br>♦</i></div>
+      <div class="pc outer" style="--x:330px;--y:40px;--r:14deg"><i>J<br>♣</i><b>♣</b><i class="br">J<br>♣</i></div>
+    </div>
+    <figure class="hero-card" style="margin:0">
+      <div class="bar mono">Player profile</div>
+      <img src="assets/headshot.jpeg" alt="Noah Apteker">
+      <div class="cap mono"><span>N. Apteker</span><span>NYC</span></div>
+    </figure>
+    </div>
+    <div class="hero-row">
+      <div class="tag">Engineering → Data → Markets.<br>From Joburg to Philly to NYC.</div>
+      <a class="cta mono" href="#contact">Open to quant opportunities →</a>
+    </div>
+    <h1 class="name">Noah Apteker</h1>
+  </section>
+
+  <div class="marquee mono" aria-hidden="true"><div id="mq"></div></div>
+
+  <!-- ===== about ===== -->
+  <section class="about" id="about">
+    <div class="box rv">
+      <div class="title mono">About</div>
+      <div class="content">
+        <p>I like problems where the answer depends on the odds. As an electrical engineer, that meant sizing a power system under uncertain demand. Now it means statistical models. At the bridge table, it's deciding how to play a hand from incomplete information.</p>
+        <p>I grew up in <b>Johannesburg</b> and came to the US for a <b>BS in Electrical Engineering at Drexel</b>. I then spent two years as an electrical engineer at Burns Engineering, working on power, lighting, and electrical safety projects for ports, transit agencies, highways, and universities.</p>
+        <p>Now I'm doing an <b>MS in Data Science at Columbia</b> and working as a research assistant on Bayesian models in the Movement Recovery Lab. Next, I want to work in <b>quantitative finance</b>.</p>
+      </div>
+      <div class="facts mono">
+        <div><b>Columbia</b>MS Data Science<br>(Dec 2027)</div>
+        <div><b>Drexel</b>BS Elec. Eng.<br>(Magna Cum Laude)</div>
+        <div><b>Stack</b>Python · R · SQL<br>MATLAB · C</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== work ===== -->
+  <section class="work" id="work">
+    <div class="sec-title"><h2>Work</h2><span class="mono">(03)</span></div>
+
+    <!-- Columbia -->
+    <div class="job rv">
+      <div class="side mono"><span>Sep 2026 – now</span><span>New York, NY</span></div>
+      <div class="main">
+        <div class="mono dim">Columbia University · Movement Recovery Laboratory</div>
+        <h3>Research Assistant</h3>
+        <p><b>Bayesian modeling of non-sigmoidal neural recruitment curves.</b> When a nerve pathway is stimulated harder and harder, the muscle's response grows along a "recruitment curve." Models usually assume an S shape, but real data often doesn't follow one. I work on hierarchical Bayesian models in the lab's hbMEP framework that fit more flexible curves and show how much confidence each estimate deserves.</p>
+        <div class="tags mono"><span>Python</span><span>Bayesian inference</span><span>Hierarchical models</span></div>
+      </div>
+    </div>
+
+    <!-- Burns -->
+    <div class="job rv">
+      <div class="side mono"><span>Jun 2024 – Aug 2026</span><span>Philadelphia, PA</span></div>
+      <div class="main">
+        <div class="mono dim">Burns Engineering Inc.</div>
+        <h3>Electrical Design Associate</h3>
+        <p>At Burns I worked on power distribution, electrical safety, lighting, and energy projects for transit agencies, toll authorities, universities, and ports. Projects ran from first site visit to final report or bid set. These are a few highlights.</p>
+      </div>
+    </div>
+
+    <div class="sub-bar mono"><span>Highlight projects · Burns</span><span>(05)</span></div>
+    <div class="cards">
+      <article class="wcard rv">
+        <div class="top mono"><span>Ports · EV charging</span><span>#0001/05</span></div>
+        <h3>Port of Oakland Green Power Microgrid</h3>
+        <div class="role">With Moffatt &amp; Nichol</div>
+        <p>The project started as a full seaport microgrid: a 1 MW solar array, 6.5 MW of battery storage, and about 150 heavy-duty EV chargers, backed by a $41.6M state grant. I sized and modeled the system, worked on Burns' 30-charger share of the design, and helped coordinate the 30/60/90% reviews.</p>
+        <p>In later iterations the Port narrowed the scope to EV charging alone. That package went out to bid in December 2025 as 115 heavy-duty chargers across five sites.</p>
+        <div class="big">$52M<small>Engineer's estimate, EV charging bid package</small></div>
+        <div class="tags mono"><span>EV charging</span><span>Solar + BESS</span><span>Design reviews</span></div>
+        <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-to-help-provide-greener-and-more-resilient-power-to-the-port-of-oakland/" target="_blank" rel="noopener">Burns ↗</a><a href="https://www.portofoakland.com/wp-content/uploads/2025/12/4379-AD-COPY-TCEP-Green-Power-Microgrid-Project-EV-Chargers.pdf" target="_blank" rel="noopener">Bid notice ↗</a></div>
+      </article>
+
+      <article class="wcard rv">
+        <div class="top mono"><span>Transit · Electrical safety</span><span>#0002/05</span></div>
+        <h3>NJ Transit Arc Flash Study</h3>
+        <div class="role">River Line</div>
+        <p>This was part of Burns' statewide arc flash hazard analysis and electrical safety program for NJ Transit, which covers more than 200 facilities. I made site visits along the River Line, the light rail between Trenton and Camden, to collect equipment data. I then built the system model in SKM, validated it, and wrote up the findings in the engineering report.</p>
+        <div class="big">200+<small>Facilities in the statewide program</small></div>
+        <div class="tags mono"><span>SKM PowerTools</span><span>Arc flash</span><span>Field surveys</span></div>
+        <div class="srcs mono"><a href="https://www.burns-group.com/?p=51933" target="_blank" rel="noopener">Burns ↗</a></div>
+      </article>
+
+      <article class="wcard rv">
+        <div class="top mono"><span>Highways · Lighting</span><span>#0003/05</span></div>
+        <h3>PA Turnpike Wilkes-Barre Lighting</h3>
+        <div class="role">Toll plaza removal</div>
+        <p>When the Pennsylvania Turnpike moved to cashless Open Road Tolling, the toll plaza at the Wilkes-Barre interchange on the Northeast Extension came out. I redesigned the interchange lighting for the new layout, removing and relocating about 50 light fixtures and checking light levels in AGI32.</p>
+        <div class="big">~50<small>Fixtures removed &amp; relocated</small></div>
+        <div class="tags mono"><span>AGI32</span><span>Roadway lighting</span></div>
+        <div class="srcs mono"><a href="https://www.fox56.com/news/local/overnight-closure-planned-at-wilkes-barre-interchange-on-turnpike" target="_blank" rel="noopener">Context ↗</a></div>
+      </article>
+
+      <article class="wcard rv">
+        <div class="top mono"><span>Campus · Utilities</span><span>#0004/05</span></div>
+        <h3>Clemson Ductbank Relocation</h3>
+        <div class="role">Clemson University</div>
+        <p>A new pedestrian bridge over Williamson Road, linking a new parking structure to campus, was going to sit right on top of an existing medium-voltage ductbank. Burns designed the relocation of the ductbank along with its medium-voltage circuits and fiber optic cabling, then provided bid-phase support and coordination with the adjacent projects.</p>
+        <div class="tags mono"><span>MV distribution</span><span>Utility relocation</span></div>
+        <div class="srcs mono"><a href="https://www.burns-group.com/news-and-events-item/burns-continues-to-be-a-trusted-advisor-for-power-and-utilities-projects-at-clemson-university/" target="_blank" rel="noopener">Burns ↗</a></div>
+      </article>
+
+      <article class="wcard rv">
+        <div class="top mono"><span>Energy · Analytics</span><span>#0005/05</span></div>
+        <h3>Cordia Power Study</h3>
+        <div class="role">Utility data analysis &amp; forecasting</div>
+        <p>I cleaned and validated three years of utility billing data, catching errors and anomalous readings. Then I forecast consumption to support cost-cutting recommendations. This project is what pushed me toward data science.</p>
+        <div class="big">3 yrs<small>Of billing data, cleaned and forecast</small></div>
+        <div class="tags mono"><span>Excel / VBA</span><span>Forecasting</span></div>
+      </article>
+
+      <article class="wcard more rv">
+        <div class="top mono"><span>And more</span><span>+</span></div>
+        <p>Along with these, I supported a range of other power and utility projects at Burns, mostly in transit, highway, and campus infrastructure.</p>
+      </article>
+    </div>
+
+    <!-- EZSoft -->
+    <div class="job rv">
+      <div class="side mono"><span>Apr – Sep 2023</span><span>Malvern, PA</span></div>
+      <div class="main">
+        <div class="mono dim">EZSoft Inc. · Drexel co-op</div>
+        <h3>Assistant Automation Engineer</h3>
+        <p>I designed and modeled electrical control panels in Fusion 360 and helped wire them. I also sourced hardware to spec and made site visits to check installations against the drawings.</p>
+        <div class="tags mono"><span>Fusion 360</span><span>Control panels</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== bridge ===== -->
+  <section id="bridge">
+    <div class="sec-title"><h2>Bridge</h2><span class="mono">♠ ♥ ♦ ♣</span></div>
+
+    <div class="bridge-lede">
+      <div class="rv">
+        <div class="stat">Youngest ever</div>
+        <p class="mono" style="font-size:13px;margin-top:.8rem">South African National Teams champion, age 16 (2018)</p>
+        <blockquote>"Bridge keeps your mind sharp."<cite class="mono">SA Jewish Report, 2020</cite></blockquote>
+      </div>
+      <div class="rv">
+        <p>I started at age nine at the Links Bridge Club in Johannesburg, coached by Neville Eber. My father, Alon, has also played for South Africa.</p>
+        <p>I've since played for three countries. I played for England and the USA in World Youth events, and for South Africa in the Open series of the world championships, most recently in Herning, Denmark in 2025.</p>
+        <p>Bridge is basically probability, inference, and partnership under time pressure. That's a big part of why quant finance appeals to me.</p>
+      </div>
+    </div>
+
+    <ul class="results">
+      <li class="rv"><span class="yr">2025</span><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2025</span><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2024</span><div><h4>Selected for South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2023</span><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2021</span><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2021</span><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2019</span><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2018</span><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2017</span><div><h4>England, Under-26: World Youth Teams Championships</h4></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+    </ul>
+
+    <div class="sub-bar mono"><span>In the press</span><span>(09)</span></div>
+    <div class="press">
+      <a href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2020</span><span class="t">Bridging the gap</span><span class="d">Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</span></a>
+      <a href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2024</span><span class="t">SA team at Argentina championship a Jewish affair</span><span class="d">Father and son qualify for South Africa.</span></a>
+      <a href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener"><span class="mono">ACBL Daily Bulletin · 2023</span><span class="t">U.S. juniors at the World Youth Championships</span><span class="d">USA1 tops the Under-26 round robin in Veldhoven.</span></a>
+      <a href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener"><span class="mono">SABF · 2025</span><span class="t">WBF Championships: the South African perspective</span><span class="d">Hand-by-hand coverage from Herning.</span></a>
+      <a href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-newsletter-August-2025.pdf" target="_blank" rel="noopener"><span class="mono">SABF Newsletter · 2025</span><span class="t">Off to the World Championships</span><span class="d">The Open team is announced.</span></a>
+      <a href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener"><span class="mono">Svenska Bridgeförbundet · 2021</span><span class="t">Vinnare av Chairman's Cup</span><span class="d">Official honor roll: team RSE, 2021.</span></a>
+      <a href="https://www.sabf.co.za/newsletters/S%20A%20B%20F.5.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2018</span><span class="t">Orlando &amp; the Inter-Provincials</span><span class="d">World Bridge Series; the Medwin Cup win.</span></a>
+      <a href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2019</span><span class="t">Movers and Shakers in 2018</span><span class="d">Top of the national masterpoint list.</span></a>
+      <a href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2021</span><span class="t">Congress results</span><span class="d">First place, Congress Teams.</span></a>
+    </div>
+  </section>
+
+  <!-- ===== off the clock ===== -->
+  <section id="off">
+    <div class="sec-title"><h2>Off the clock</h2><span class="mono">(04)</span></div>
+    <div class="hobbies">
+      <div class="hobby rv"><span class="suit">♣</span><h3>Soccer</h3><p>I've played my whole life. Good soccer is like good bridge: read the other side, communicate with teammates without stopping play, and decide fast on incomplete information.</p></div>
+      <div class="hobby rv"><span class="suit r">♥</span><h3>Man United</h3><p>A committed supporter in good seasons and difficult ones. Early kickoffs on US time don't stop me, and I'm always up for an argument about tactics, transfers, or the underlying numbers.</p></div>
+      <div class="hobby rv"><span class="suit r">♦</span><h3>Running</h3><p>It's how I clear my head. I like the steady progress of a training block: logging miles, tracking pace, and watching the numbers come down week by week.</p></div>
+      <div class="hobby rv"><span class="suit">♠</span><h3>Pickleball</h3><p>Fast, social, and more tactical than it looks. Doubles is a partnership game: know where your partner will be, play the percentages at the kitchen line, and wait for the right ball.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== contact ===== -->
+  <section class="cta-wrap" id="contact">
+    <div class="mono" style="margin-bottom:1.2rem">Say hello</div>
+    <a class="cta-big" href="mailto:nta3125@columbia.edu">Let's talk</a>
+    <div class="cta-sub mono">
+      <a href="mailto:nta3125@columbia.edu">nta3125@columbia.edu</a>
+      <a href="https://www.linkedin.com/in/noah-apteker" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <footer class="foot mono">
+    <span>© <span id="yr">2026</span> Noah Apteker</span>
+    <span>New York, NY</span>
+  </footer>
+</div>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // contrast toggle (remembered per visitor)
+  const root = document.documentElement;
+  try { if (localStorage.getItem('na-theme') === 'contrast') root.dataset.theme = 'contrast'; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const on = root.dataset.theme !== 'contrast';
+    if (on) root.dataset.theme = 'contrast'; else delete root.dataset.theme;
+    try { localStorage.setItem('na-theme', on ? 'contrast' : ''); } catch (e) {}
+  });
+
+  // marquee
+  const words = ['Data Science', '♠', 'Electrical Engineering', '♥', 'Quantitative Finance', '♦', 'Bayesian Modeling', '♣', 'International Bridge', '♠', 'Johannesburg → NYC', '♥'];
+  const mq = document.getElementById('mq');
+  mq.innerHTML = [...words, ...words].map(w => `<span${'♥♦'.includes(w) ? ' class="r"' : ''}>${w}</span>`).join('');
+
+  // suit field
+  const suits = ['♠', '♥', '♦', '♣'];
+  const field = document.getElementById('suits');
+  const setSuit = el => { const v = suits[(Math.random() * 4) | 0]; el.textContent = v; el.classList.toggle('r', v === '♥' || v === '♦'); };
+  function fill() {
+    const cols = Math.max(1, Math.floor(field.clientWidth / 34));
+    const rows = Math.max(1, Math.floor(field.clientHeight / 34));
+    field.innerHTML = '';
+    for (let i = 0; i < cols * rows; i++) {
+      const s = document.createElement('span');
+      setSuit(s);
+      if (Math.random() < .08) s.classList.add('on');
+      field.appendChild(s);
+    }
+  }
+  fill();
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fill, 200); });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(() => {
+      const kids = field.children; if (!kids.length) return;
+      for (let i = 0; i < 6; i++) {
+        const k = kids[(Math.random() * kids.length) | 0];
+        k.classList.toggle('on');
+        if (Math.random() < .5) setSuit(k);
+      }
+    }, 180);
+  }
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
