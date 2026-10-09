@@ -221,17 +221,6 @@
   .results a.src { text-decoration: none; text-align: right; font-size: 20px; }
   @media (max-width: 700px) { .results li { grid-template-columns: 4rem 1fr; } .results a.src { grid-column: 2; text-align: left; font-size: 12px; } }
 
-  .press { display: grid; grid-template-columns: repeat(3, 1fr); }
-  .press a {
-    display: flex; flex-direction: column; gap: .5rem; padding: 1.25rem; min-height: 170px; text-decoration: none;
-    border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); transition: background .2s, color .2s;
-  }
-  .press a:nth-child(3n) { border-right: 0; }
-  .press a:hover { background: var(--ink); color: var(--primary); }
-  .press .t { font: 400 20px/1.25 var(--display); }
-  .press .d { font-size: 15px; opacity: .8; margin-top: auto; }
-  @media (max-width: 900px) { .press { grid-template-columns: 1fr 1fr; } .press a:nth-child(3n) { border-right: 1px solid var(--ink); } .press a:nth-child(2n) { border-right: 0; } }
-  @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
 
   .bridge-lede.three { grid-template-columns: 1fr 1.25fr .9fr; }
@@ -721,18 +710,58 @@
     </div>
 
     <div class="sub-bar mono"><span>In the press</span><span>(11)</span></div>
-    <div class="press">
-      <a href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener"><span class="mono">IBPA Awards · 2018</span><span class="t">Richard Freeman Junior Deal of the Year</span><span class="d">Compiled by John Carruthers. Noah's Lyon hand is on the shortlist.</span></a>
-      <a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener"><span class="mono">WBF Daily Bulletin · 2017</span><span class="t">Fast learner</span><span class="d">Brent Manley on the double squeeze in Lyon.</span></a>
-      <a href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2020</span><span class="t">Bridging the gap</span><span class="d">Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</span></a>
-      <a href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener"><span class="mono">SA Jewish Report · 2024</span><span class="t">SA team at Argentina championship a Jewish affair</span><span class="d">Father and son qualify for South Africa.</span></a>
-      <a href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener"><span class="mono">ACBL Daily Bulletin · 2023</span><span class="t">U.S. juniors at the World Youth Championships</span><span class="d">USA1 tops the Under-26 round robin in Veldhoven.</span></a>
-      <a href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener"><span class="mono">SABF · 2025</span><span class="t">WBF Championships: the South African perspective</span><span class="d">Hand-by-hand coverage from Herning.</span></a>
-      <a href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-newsletter-August-2025.pdf" target="_blank" rel="noopener"><span class="mono">SABF Newsletter · 2025</span><span class="t">Off to the World Championships</span><span class="d">The Open team is announced.</span></a>
-      <a href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener"><span class="mono">Svenska Bridgeförbundet · 2021</span><span class="t">Vinnare av Chairman's Cup</span><span class="d">Official honor roll: team RSE, 2021.</span></a>
-      <a href="https://www.sabf.co.za/newsletters/S%20A%20B%20F.5.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2018</span><span class="t">Orlando &amp; the Inter-Provincials</span><span class="d">World Bridge Series; the Medwin Cup win.</span></a>
-      <a href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2019</span><span class="t">Movers and Shakers in 2018</span><span class="d">Top of the national masterpoint list.</span></a>
-      <a href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener"><span class="mono">SABF "The Bridge" · 2021</span><span class="t">Congress results</span><span class="d">First place, Congress Teams.</span></a>
+    <div class="years press-years">
+      <details class="yr-group rv">
+        <summary><span class="yr">2025</span><span class="hl">WBF Championships: the South African perspective</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>WBF Championships: the South African perspective</h4><p><span class="mono">SABF</span> · Hand-by-hand coverage from Herning.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          <li><div><h4>Off to the World Championships</h4><p><span class="mono">SABF Newsletter</span> · The Open team is announced.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-newsletter-August-2025.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2024</span><span class="hl">SA team at Argentina championship a Jewish affair</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>SA team at Argentina championship a Jewish affair</h4><p><span class="mono">SA Jewish Report</span> · Father and son qualify for South Africa.</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2023</span><span class="hl">U.S. juniors at the World Youth Championships</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>U.S. juniors at the World Youth Championships</h4><p><span class="mono">ACBL Daily Bulletin</span> · USA1 tops the Under-26 round robin in Veldhoven.</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2021</span><span class="hl">Vinnare av Chairman's Cup</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Vinnare av Chairman's Cup</h4><p><span class="mono">Svenska Bridgeförbundet</span> · Official honor roll: team RSE, 2021.</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          <li><div><h4>Congress results</h4><p><span class="mono">SABF "The Bridge"</span> · First place, Congress Teams.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2020</span><span class="hl">Bridging the gap</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Bridging the gap</h4><p><span class="mono">SA Jewish Report</span> · Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2019</span><span class="hl">Movers and Shakers in 2018</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Movers and Shakers in 2018</h4><p><span class="mono">SABF "The Bridge"</span> · Top of the national masterpoint list.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2018</span><span class="hl">Richard Freeman Junior Deal of the Year</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Richard Freeman Junior Deal of the Year</h4><p><span class="mono">IBPA Awards</span> · Compiled by John Carruthers. Noah's Lyon hand is on the shortlist.</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          <li><div><h4>Orlando &amp; the Inter-Provincials</h4><p><span class="mono">SABF "The Bridge"</span> · World Bridge Series; the Medwin Cup win.</p></div><a class="src" href="https://www.sabf.co.za/newsletters/S%20A%20B%20F.5.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
+      <details class="yr-group rv">
+        <summary><span class="yr">2017</span><span class="hl">Fast learner</span><span class="chev" aria-hidden="true">+</span></summary>
+        <ul>
+          <li><div><h4>Fast learner</h4><p><span class="mono">WBF Daily Bulletin</span> · Brent Manley on the double squeeze in Lyon.</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+        </ul>
+      </details>
     </div>
   </section>
 
