@@ -184,6 +184,8 @@
   .job p { margin: 0; font-size: 18px; }
   .job p b { font-weight: 400; font-style: italic; }
   .dim { opacity: .75; }
+  .badge { align-self: flex-start; border: 1px solid currentColor; padding: 2px 8px; margin-top: .3rem; }
+  .job .srcs { margin-top: .2rem; }
   @media (max-width: 800px) { .job { grid-template-columns: 1fr; } .job .side { border-right: 0; border-bottom: 1px solid var(--primary); flex-direction: row; justify-content: space-between; padding: .8rem 1.25rem; } }
   .wcard .top { display: flex; justify-content: space-between; gap: 1rem; opacity: .75; }
   .wcard h3 { margin: 0; font: 400 clamp(30px, 3.4vw, 48px)/1 var(--display); text-transform: uppercase; }
@@ -392,7 +394,7 @@
 
   <!-- ===== work ===== -->
   <section class="work" id="work">
-    <div class="sec-title"><h2>Work</h2><span class="mono">(03)</span></div>
+    <div class="sec-title"><h2>Work</h2><span class="mono">(04)</span></div>
 
     <!-- Columbia -->
     <div class="job rv">
@@ -402,6 +404,19 @@
         <h3>Research Assistant</h3>
         <p><b>Bayesian modeling of non-sigmoidal neural recruitment curves.</b> When a nerve pathway is stimulated harder and harder, the muscle's response grows along a "recruitment curve." Models usually assume an S shape, but real data often doesn't follow one. I work on hierarchical Bayesian models in the lab's hbMEP framework that fit more flexible curves and show how much confidence each estimate deserves.</p>
         <div class="tags mono"><span>Python</span><span>Bayesian inference</span><span>Hierarchical models</span></div>
+      </div>
+    </div>
+
+    <!-- Current finance project -->
+    <div class="job rv">
+      <div class="side mono"><span>Fall 2026 · now</span><span class="badge">In progress</span></div>
+      <div class="main">
+        <div class="mono dim">Columbia University · IEOR 4576 Data-Driven Models in Finance · team of 3</div>
+        <h3>Replicating X-Trend</h3>
+        <p><b>Few-shot learning for trend-following under regime change.</b> Classic momentum strategies tend to break down when markets shift abruptly. X-Trend (Wood, Kessler, Roberts &amp; Zohren, 2024) is a deep learning model that adapts by attending to similar past market regimes, which it finds using Gaussian-process change-point detection. My team is replicating it on 50 liquid futures across commodities, equity indices, rates, and FX from WRDS (1990–2026), and extending the test to a new 2024–2026 out-of-sample period.</p>
+        <p>The question: does a regime-aware model deliver a higher Sharpe ratio than buy-and-hold, time-series momentum, MACD, and a neural baseline without context, especially in turbulent periods? We're currently at the proposal stage, and I'll post results here as they come in.</p>
+        <div class="tags mono"><span>LSTM + attention</span><span>Sharpe-ratio loss</span><span>Change-point detection</span><span>Futures</span><span>WRDS</span><span>Backtesting</span></div>
+        <div class="srcs mono"><a href="https://arxiv.org/abs/2310.10500" target="_blank" rel="noopener">Original paper (arXiv) ↗</a></div>
       </div>
     </div>
 
