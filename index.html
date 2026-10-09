@@ -230,6 +230,14 @@
   @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
 
+  /* ---------- leadership ---------- */
+  .tke { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--ink); }
+  .tke > div { padding: 1.6rem 1.4rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; }
+  .tke > div:last-child { border-right: 0; }
+  .tke b { font: 400 clamp(48px, 6vw, 88px)/.9 var(--display); font-weight: 400; }
+  .tke-note { margin: 0; padding: 1.4rem 1.25rem; font-size: 20px; font-style: italic; border-bottom: 1px solid var(--ink); }
+  @media (max-width: 700px) { .tke { grid-template-columns: 1fr; } .tke > div { border-right: 0; border-bottom: 1px solid var(--ink); } .tke > div:last-child { border-bottom: 0; } }
+
   /* ---------- off the clock ---------- */
   .hobbies { display: grid; grid-template-columns: repeat(2, 1fr); }
   .hobby:nth-child(2n) { border-right: 0; }
@@ -272,6 +280,7 @@
     <nav class="mono" aria-label="Sections">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#leadership" class="hide-sm">Leadership</a>
       <a href="#bridge">Bridge</a>
       <a href="#contact" class="hide-sm">Contact</a>
     </nav>
@@ -415,6 +424,35 @@
     </div>
   </section>
 
+  <!-- ===== leadership ===== -->
+  <section id="leadership">
+    <div class="sec-title"><h2>Leadership</h2><span class="mono">ΤΚΕ · Drexel</span></div>
+
+    <div class="bridge-lede">
+      <div class="rv">
+        <div class="stat">2 → 41</div>
+        <p class="mono" style="font-size:13px;margin-top:.8rem">Members, from refounding to past the 40 needed to charter</p>
+      </div>
+      <div class="rv">
+        <p>In Winter 2022, a recruiter from Tau Kappa Epsilon's national organization came to Drexel and approached me and a friend about refounding the chapter. It had been off campus for five years.</p>
+        <p>We started with two people. By the time I graduated, the chapter had 41 brothers, enough to clear the 40-member threshold for chartering.</p>
+      </div>
+    </div>
+
+    <ul class="results">
+      <li class="rv"><span class="yr">2022</span><div><h4>Founding Vice President</h4><p>First vice president of the refounding class</p></div><span></span></li>
+      <li class="rv"><span class="yr">2023</span><div><h4>President</h4><p>Summer 2023 – Winter 2024 · led the chapter through its growth toward chartering</p></div><span></span></li>
+      <li class="rv"><span class="yr">2024</span><div><h4>Recruitment Chair</h4><p>My final quarter before graduation, taking on recruitment to make one last contribution to the chapter</p></div><span></span></li>
+    </ul>
+
+    <div class="tke">
+      <div class="rv"><b>41</b><span class="mono">Brothers, up from 2</span></div>
+      <div class="rv"><b>$10K</b><span class="mono">Raised for St. Jude Children's Research Hospital</span></div>
+      <div class="rv"><b>BG55</b><span class="mono">Hosted a meet &amp; greet with Eagles defensive end Brandon Graham</span></div>
+    </div>
+    <p class="tke-note">Beyond the headline events, we ran a steady calendar of social, brotherhood, and philanthropy events, building a chapter culture almost from scratch.</p>
+  </section>
+
   <!-- ===== bridge ===== -->
   <section id="bridge">
     <div class="sec-title"><h2>Bridge</h2><span class="mono">♠ ♥ ♦ ♣</span></div>
@@ -465,7 +503,7 @@
       <div class="hobby rv"><span class="suit">♣</span><h3>Soccer</h3><p>I've played my whole life. Good soccer is like good bridge: read the other side, communicate with teammates without stopping play, and decide fast on incomplete information.</p><p>I'm also a die-hard <b>Manchester United</b> supporter in good seasons and difficult ones. Early kickoffs on US time don't stop me, and I'm always up for an argument about tactics, transfers, or the underlying numbers.</p></div>
       <div class="hobby rv"><span class="suit r">♦</span><h3>Running</h3><p>Running is how I clear my head. I've run Philadelphia's <b>Rocky Run</b>, and my goal is to one day run the <b>New York City Marathon</b>. Until then, I'm logging miles and watching my pace come down week by week.</p></div>
       <div class="hobby rv"><span class="suit">♠</span><h3>Pickleball</h3><p>I'm an avid pickleball player and try to get out on the court with friends whenever I can.</p></div>
-      <div class="hobby rv"><span class="suit r">♥</span><h3>Trivia</h3><p>I'm a trivia enthusiast. I play <b>JetPunk</b> and <b>Sporcle</b> quizzes regularly and love testing my general knowledge, from capitals and flags to sports and history.</p></div>
+      <div class="hobby rv"><span class="suit r">♥</span><h3>Trivia</h3><p>I'm a trivia enthusiast. I play <b>JetPunk</b> and <b>Sporcle</b> quizzes regularly and love testing my general knowledge.</p></div>
     </div>
   </section>
 
