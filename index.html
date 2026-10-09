@@ -283,8 +283,6 @@
   .tool:hover { background: var(--ink); color: var(--primary); }
   .tool b { font: 400 clamp(40px, 5vw, 72px)/.95 var(--display); text-transform: uppercase; font-weight: 400; }
   .tool .mono:last-child { line-height: 1.6; }
-  .langs { display: flex; flex-wrap: wrap; gap: .6rem; padding: 1.2rem 1.25rem; border-bottom: 1px solid var(--ink); }
-  .langs span { border: 1px solid var(--ink); padding: .45rem .9rem; font-size: 13px; }
   @media (max-width: 900px) { .tools { grid-template-columns: 1fr 1fr; } .tool:nth-child(3n) { border-right: 1px solid var(--ink); } .tool:nth-child(2n) { border-right: 0; } }
   @media (max-width: 560px) { .tools { grid-template-columns: 1fr; } .tool { border-right: 0 !important; } }
 
@@ -546,8 +544,13 @@
       <div class="tool rv"><span class="mono dim">06</span><b>ETAP</b><span class="mono">Power system modeling &amp; simulation</span></div>
     </div>
     <div class="sub-bar mono"><span>Programming &amp; data</span><span>(06)</span></div>
-    <div class="langs mono">
-      <span>Python</span><span>R</span><span>SQL</span><span>MATLAB</span><span>C</span><span>Excel / VBA</span>
+    <div class="tools">
+      <div class="tool rv"><span class="mono dim">01</span><b>Python</b><span class="mono">Data pipelines · statistical modeling<br>Used on: Bayesian research</span></div>
+      <div class="tool rv"><span class="mono dim">02</span><b>R</b><span class="mono">Statistics &amp; data analysis<br>Certified: Harvard Data Science · R Basics</span></div>
+      <div class="tool rv"><span class="mono dim">03</span><b>SQL</b><span class="mono">Querying &amp; data management</span></div>
+      <div class="tool rv"><span class="mono dim">04</span><b>MATLAB</b><span class="mono">Numerical computing · signals &amp; systems</span></div>
+      <div class="tool rv"><span class="mono dim">05</span><b>C</b><span class="mono">Low-level programming</span></div>
+      <div class="tool rv"><span class="mono dim">06</span><b>Excel / VBA</b><span class="mono">Data cleaning · forecasting<br>Used on: Cordia power study</span></div>
     </div>
   </section>
 
@@ -574,7 +577,7 @@
 
     <div class="tke">
       <div class="rv"><b>41</b><span class="mono">Brothers, up from 2</span></div>
-      <div class="rv"><b>$10K</b><span class="mono">Raised for St. Jude Children's Research Hospital</span></div>
+      <div class="rv"><b>$2K</b><span class="mono">Raised for St. Jude Children's Research Hospital</span></div>
       <div class="rv"><b>BG55</b><span class="mono">Hosted a meet &amp; greet with Eagles defensive end Brandon Graham</span></div>
     </div>
     <p class="tke-note">Beyond the headline events, we ran a steady calendar of social, brotherhood, and philanthropy events, building a chapter culture almost from scratch.</p>
