@@ -234,11 +234,17 @@
   @media (max-width: 600px) { .press { grid-template-columns: 1fr; } .press a { border-right: 0 !important; min-height: 0; } }
   .sub-bar { padding: .6rem 1.25rem; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; }
 
+  .bridge-lede.three { grid-template-columns: 1fr 1.25fr .9fr; }
+  .bridge-lede .lede-photo { margin: 0; border-left: 1px solid var(--ink); display: flex; flex-direction: column; }
+  .lede-photo img { display: block; width: 100%; flex: 1; min-height: 0; height: 100%; max-height: 560px; object-fit: cover; object-position: center 30%; }
+  .lede-photo figcaption { padding: .6rem 1rem; border-top: 1px solid var(--ink); }
+  @media (max-width: 1000px) { .bridge-lede.three { grid-template-columns: 1fr 1fr; } .bridge-lede.three .lede-photo { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); } .lede-photo img { max-height: 520px; } }
+  @media (max-width: 800px) { .bridge-lede.three { grid-template-columns: 1fr; } }
+
   /* ---------- featured hand ---------- */
-  .feature { display: grid; grid-template-columns: 1fr 1.3fr .75fr; border-bottom: 1px solid var(--ink); }
+  .feature { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 1px solid var(--ink); }
   .feature > * { margin: 0; border-right: 1px solid var(--ink); min-width: 0; }
   .feature > *:last-child { border-right: 0; }
-  .f-photo img { display: block; width: 100%; height: 100%; object-fit: cover; max-height: 640px; }
   .f-text { padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: .9rem; }
   .f-text h3 { margin: 0; font: 400 clamp(36px, 4vw, 60px)/1 var(--display); text-transform: uppercase; }
   .f-text p { margin: 0; font-size: 18px; }
@@ -247,14 +253,9 @@
   .f-clip a { flex: 1; display: block; overflow: hidden; }
   .f-clip img { display: block; width: 100%; height: 100%; max-height: 600px; object-fit: cover; object-position: top; }
   .f-clip figcaption { padding: .6rem 1rem; border-top: 1px solid var(--ink); }
-  @media (max-width: 900px) {
-    .feature { grid-template-columns: 1fr 1fr; }
-    .f-text { grid-column: 1 / -1; grid-row: 1; border-right: 0; border-bottom: 1px solid var(--ink); }
-  }
   @media (max-width: 600px) {
     .feature { grid-template-columns: 1fr; }
     .feature > * { border-right: 0; border-bottom: 1px solid var(--ink); }
-    .f-photo img { max-height: 420px; }
     .f-clip img { max-height: 380px; }
   }
 
@@ -568,7 +569,7 @@
   <section id="bridge">
     <div class="sec-title"><h2>Bridge</h2><span class="mono">♠ ♥ ♦ ♣</span></div>
 
-    <div class="bridge-lede">
+    <div class="bridge-lede three">
       <div class="rv">
         <div class="stat">Youngest ever</div>
         <p class="mono" style="font-size:13px;margin-top:.8rem">South African National Teams champion, age 16 (2018)</p>
@@ -579,11 +580,11 @@
         <p>I've since played for three countries. I played for England and the USA in World Youth events, and for South Africa in the Open series of the world championships, most recently in Herning, Denmark in 2025.</p>
         <p>At its core, bridge is a game of probability and inference. A successful partnership has to communicate information based on the inferences each player picks up over the course of a hand.</p>
       </div>
+      <figure class="lede-photo rv"><img src="assets/bridge/playing.jpg" alt="Noah at the bridge table at the 2024 World Bridge Games in Buenos Aires" loading="lazy"><figcaption class="mono">World Bridge Games (Olympiad) · Buenos Aires, 2024</figcaption></figure>
     </div>
 
     <div class="sub-bar mono"><span>Featured hand · Lyon 2017</span><span>IBPA shortlist</span></div>
     <div class="feature">
-      <figure class="f-photo rv"><img src="assets/bridge/playing.jpg" alt="Noah at the bridge table, studying his hand" loading="lazy"></figure>
       <div class="f-text rv">
         <div class="mono dim">5th World Youth Open Championships · Junior Teams</div>
         <h3>A double squeeze at 16</h3>
@@ -597,7 +598,7 @@
     <ul class="results">
       <li class="rv"><span class="yr">2025</span><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2025</span><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-      <li class="rv"><span class="yr">2024</span><div><h4>Selected for South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+      <li class="rv"><span class="yr">2024</span><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2023</span><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2021</span><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
       <li class="rv"><span class="yr">2021</span><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
