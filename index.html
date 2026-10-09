@@ -259,6 +259,23 @@
     .f-clip img { max-height: 380px; }
   }
 
+  /* ---------- projects ---------- */
+  .projects { display: grid; grid-template-columns: 1fr 1fr; }
+  .proj { padding: 1.6rem 1.6rem 2rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .9rem; }
+  .proj:last-child { border-right: 0; }
+  .proj .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .proj .top .badge { margin-top: 0; }
+  .proj h3 { margin: 0; font: 400 clamp(36px, 4vw, 60px)/1 var(--display); text-transform: uppercase; }
+  .proj .role { font-style: italic; font-size: 18px; }
+  .proj p { margin: 0; font-size: 17.5px; }
+  .proj p b, .proj li b { font-weight: 400; font-style: italic; }
+  .proj ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+  .proj li { position: relative; padding-left: 1.3rem; font-size: 16.5px; }
+  .proj li::before { content: "♦"; position: absolute; left: 0; top: .1em; font-size: 12px; color: var(--red); }
+  .proj .status { font-style: italic; opacity: .8; }
+  .proj .tags { margin-top: auto; }
+  @media (max-width: 860px) { .projects { grid-template-columns: 1fr; } .proj { border-right: 0; } }
+
   /* ---------- skills ---------- */
   .tools { display: grid; grid-template-columns: repeat(3, 1fr); }
   .tool { padding: 1.4rem 1.4rem 1.6rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); display: flex; flex-direction: column; gap: .5rem; transition: background .2s, color .2s; }
@@ -342,6 +359,7 @@
     <div class="console mono" id="console">NOAH APTEKER<br>40.8075° N, 73.9626° W<br>COLUMBIA MSDS '27</div>
     <nav class="mono" aria-label="Sections">
       <a href="#about">About</a>
+      <a href="#projects">Projects</a>
       <a href="#work">Work</a>
       <a href="#leadership" class="hide-sm">Leadership</a>
       <a href="#bridge">Bridge</a>
@@ -382,7 +400,7 @@
       <div class="content">
         <p>I like problems where the answer depends on the odds. As an electrical engineer, that meant sizing a power system under uncertain demand. Now it means statistical models. At the bridge table, it's deciding how to play a hand from incomplete information.</p>
         <p>I grew up in <b>Johannesburg</b> and came to the US for a <b>BS in Electrical Engineering at Drexel</b>. I then spent two years as an electrical engineer at Burns Engineering, working on power, lighting, and electrical safety projects for ports, transit agencies, highways, and universities.</p>
-        <p>Now I'm doing an <b>MS in Data Science at Columbia</b> and working as a research assistant on Bayesian models in the Movement Recovery Lab. My long-term career aspiration is to work in <b>quantitative finance</b>.</p>
+        <p>Now I'm doing an <b>MS in Data Science at Columbia</b> and doing research on Bayesian models in the Movement Recovery Lab. My long-term career aspiration is to work in <b>quantitative finance</b>.</p>
       </div>
       <div class="facts mono">
         <div><b>Columbia</b>MS Data Science<br>(Dec 2027)</div>
@@ -393,40 +411,50 @@
     </div>
   </section>
 
-  <!-- ===== work ===== -->
-  <section class="work" id="work">
-    <div class="sec-title"><h2>Work</h2><span class="mono">(04)</span></div>
+  <!-- ===== projects ===== -->
+  <section id="projects">
+    <div class="sec-title"><h2>Data Science Projects</h2><span class="mono">(02)</span></div>
+    <div class="projects">
+      <article class="proj rv">
+        <div class="top mono"><span>#0001/02 · Research · Columbia</span><span class="badge">Ongoing</span></div>
+        <h3>Bayesian Recruitment Curves</h3>
+        <div class="role">Movement Recovery Laboratory · research for academic credit · Sep 2026 – now</div>
+        <p><b>Bayesian modeling of non-sigmoidal neural recruitment curves.</b> When a nerve pathway is stimulated harder and harder, the muscle's response, the motor-evoked potential (MEP), grows along a "recruitment curve." Models usually assume an S shape, but real data often doesn't follow one. The goal is hierarchical Bayesian models that fit more flexible curves and show how much confidence each estimate deserves.</p>
+        <ul>
+          <li>Apply the lab's Python pipelines to extract MEPs from stimulation data and measure their size</li>
+          <li>Contribute to recruitment-curve modeling in the lab's <b>hbMEP</b> framework</li>
+          <li>Next: new curve functions, parameter uncertainty, and evaluating models on how well they predict</li>
+        </ul>
+        <div class="tags mono"><span>Python</span><span>Bayesian inference</span><span>Hierarchical models</span><span>Signal processing</span></div>
+      </article>
 
-    <!-- Columbia -->
-    <div class="job rv">
-      <div class="side mono"><span>Sep 2026 – now</span><span>New York, NY</span></div>
-      <div class="main">
-        <div class="mono dim">Columbia University · Movement Recovery Laboratory</div>
-        <h3>Research Assistant</h3>
-        <p><b>Bayesian modeling of non-sigmoidal neural recruitment curves.</b> When a nerve pathway is stimulated harder and harder, the muscle's response grows along a "recruitment curve." Models usually assume an S shape, but real data often doesn't follow one. I work on hierarchical Bayesian models in the lab's hbMEP framework that fit more flexible curves and show how much confidence each estimate deserves.</p>
-        <div class="tags mono"><span>Python</span><span>Bayesian inference</span><span>Hierarchical models</span></div>
-      </div>
-    </div>
-
-    <!-- Current finance project -->
-    <div class="job rv">
-      <div class="side mono"><span>Fall 2026 · now</span><span class="badge">In progress</span></div>
-      <div class="main">
-        <div class="mono dim">Columbia University · IEOR 4576 Data-Driven Models in Finance · team of 3</div>
+      <article class="proj rv">
+        <div class="top mono"><span>#0002/02 · Quant finance · Columbia</span><span class="badge">In progress</span></div>
         <h3>Replicating X-Trend</h3>
-        <p><b>Few-shot learning for trend-following under regime change.</b> Classic momentum strategies tend to break down when markets shift abruptly. X-Trend (Wood, Kessler, Roberts &amp; Zohren, 2024) is a deep learning model that adapts by attending to similar past market regimes, which it finds using Gaussian-process change-point detection. My team is replicating it on 50 liquid futures across commodities, equity indices, rates, and FX from WRDS (1990–2026), and extending the test to a new 2024–2026 out-of-sample period.</p>
-        <p>The question: does a regime-aware model deliver a higher Sharpe ratio than buy-and-hold, time-series momentum, MACD, and a neural baseline without context, especially in turbulent periods? We're currently at the proposal stage, and I'll post results here as they come in.</p>
+        <div class="role">IEOR 4576 Data-Driven Models in Finance · team of 3 · Fall 2026</div>
+        <p><b>Few-shot learning for trend-following under regime change.</b> Classic momentum strategies tend to break down when markets shift abruptly. X-Trend (Wood, Kessler, Roberts &amp; Zohren, 2024) is a deep learning model that adapts by attending to similar past market regimes, which it finds using Gaussian-process change-point detection.</p>
+        <ul>
+          <li>Replicating on 50 liquid futures (commodities, equity indices, rates, FX) from WRDS, 1990–2026</li>
+          <li>Extending the test to a new 2024–2026 out-of-sample period</li>
+          <li>Testing whether a regime-aware model beats buy-and-hold, time-series momentum, MACD, and a neural baseline without context on Sharpe ratio, especially in turbulent periods</li>
+        </ul>
+        <p class="status">Currently at the proposal stage. I'll post results here as they come in.</p>
         <div class="tags mono"><span>LSTM + attention</span><span>Sharpe-ratio loss</span><span>Change-point detection</span><span>Futures</span><span>WRDS</span><span>Backtesting</span></div>
         <div class="srcs mono"><a href="https://arxiv.org/abs/2310.10500" target="_blank" rel="noopener">Original paper (arXiv) ↗</a></div>
-      </div>
+      </article>
     </div>
+  </section>
+
+  <!-- ===== work ===== -->
+  <section class="work" id="work">
+    <div class="sec-title"><h2>Work</h2><span class="mono">(02)</span></div>
 
     <!-- Burns -->
     <div class="job rv">
       <div class="side mono"><span>Jun 2024 – Aug 2026</span><span>Philadelphia, PA</span></div>
       <div class="main">
         <div class="mono dim">Burns Engineering Inc.</div>
-        <h3>Design Engineer</h3>
+        <h3>Electrical Design Engineer</h3>
         <p>At Burns I worked on power distribution, electrical safety, lighting, and energy projects for transit agencies, toll authorities, universities, and ports. Projects ran from first site visit to final report or bid set. These are a few highlights.</p>
       </div>
     </div>
