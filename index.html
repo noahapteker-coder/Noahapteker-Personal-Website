@@ -141,15 +141,17 @@
   .box .content p:last-child { margin: 0; }
   .box .content b { font-weight: 400; }
   .box .content a { text-decoration: none; border-bottom: 1px solid currentColor; }
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
-  .facts div { padding: 1rem 1.2rem; border-right: 1px solid var(--ink); }
-  .facts div:last-child { border-right: 0; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+  .facts > * { padding: 1rem 1.2rem; border-right: 1px solid var(--ink); }
+  .facts > *:last-child { border-right: 0; }
+  .fact-link { text-decoration: none; transition: background .2s, color .2s; }
+  .fact-link:hover { background: var(--ink); color: var(--primary); }
   .facts b { display: block; font: 400 2rem/1 var(--display); text-transform: uppercase; margin-bottom: 6px; }
   @media (max-width: 700px) {
     .about { padding: 4rem 0; }
     .box .content { padding: 2rem 1.4rem; font-size: 1.35rem; }
     .facts { grid-template-columns: 1fr; }
-    .facts div { border-right: 0; border-bottom: 1px solid var(--ink); }
+    .facts > * { border-right: 0; border-bottom: 1px solid var(--ink); }
   }
 
   /* ---------- section headers ---------- */
@@ -312,6 +314,7 @@
       <div class="facts mono">
         <div><b>Columbia</b>MS Data Science<br>(Dec 2027)</div>
         <div><b>Drexel</b>BS Elec. Eng.<br>(Magna Cum Laude)</div>
+        <a class="fact-link" href="https://www.credly.com/badges/0c656374-1e32-40de-a6d7-17eeb702a589" target="_blank" rel="noopener" title="Verify on Credly"><b>EIT ↗</b>Passed NCEES FE exam<br>(Sep 2024)</a>
         <div><b>Stack</b>Python · R · SQL<br>MATLAB · C</div>
       </div>
     </div>
@@ -337,7 +340,7 @@
       <div class="side mono"><span>Jun 2024 – Aug 2026</span><span>Philadelphia, PA</span></div>
       <div class="main">
         <div class="mono dim">Burns Engineering Inc.</div>
-        <h3>Electrical Design Associate</h3>
+        <h3>Design Engineer</h3>
         <p>At Burns I worked on power distribution, electrical safety, lighting, and energy projects for transit agencies, toll authorities, universities, and ports. Projects ran from first site visit to final report or bid set. These are a few highlights.</p>
       </div>
     </div>
