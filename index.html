@@ -288,6 +288,49 @@
   .press-all[open] > summary .chev { transform: rotate(45deg); }
   .press-all .years { border-top: 0; }
 
+  /* ---------- bridge timeline (horizontal) ---------- */
+  .tlh { border-bottom: 1px solid var(--ink); }
+  .tlh-bar { display: flex; justify-content: space-between; align-items: center; padding: .5rem 1.25rem; border-bottom: 1px solid var(--ink); }
+  .tlh-arrows { display: flex; gap: .4rem; }
+  .tlh-arrow { all: unset; cursor: pointer; width: 30px; height: 26px; display: grid; place-items: center; border: 1px solid var(--ink); font-size: 14px; }
+  .tlh-arrow:hover, .tlh-arrow:focus-visible { background: var(--ink); color: var(--primary); }
+  .tlh-arrow[disabled] { opacity: .3; cursor: default; background: none; color: inherit; }
+  .tlh-rail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; position: relative; scrollbar-width: thin; scrollbar-color: var(--ink) transparent;
+    background: linear-gradient(var(--ink), var(--ink)) 0 58px / 100% 1px no-repeat; }
+  .tlh-node { all: unset; box-sizing: border-box; cursor: pointer; scroll-snap-align: start; flex: 0 0 clamp(180px, 22%, 260px); padding: 1.1rem 1.25rem 1.3rem; border-right: 1px solid var(--ink); display: flex; flex-direction: column; gap: .45rem; }
+  .tlh-node:last-child { border-right: 0; }
+  .tlh-rail::-webkit-scrollbar { height: 4px; }
+  .tlh-rail::-webkit-scrollbar-thumb { background: var(--ink); }
+  .tlh-node:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+  .tlh-node:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+  .tlh-dot { width: 34px; height: 34px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; background: var(--primary); font-size: 16px; position: relative; z-index: 1; transition: transform .2s; }
+  .tlh-dot.r { color: var(--red); }
+  .tlh-year { font: 400 30px/1 var(--display); margin-top: .5rem; }
+  .tlh-title { font: 400 17px/1.3 var(--display); }
+  .tlh-place { opacity: .7; }
+  .tlh-node[aria-selected="true"] { background: var(--ink); color: var(--primary); }
+  .tlh-node[aria-selected="true"] .tlh-dot { transform: scale(1.12); border-color: var(--primary); background: var(--ink); color: var(--primary); }
+  .tlh-node[aria-selected="true"] .tlh-dot.r { color: var(--red); }
+  .tlh-panel { border-top: 1px solid var(--ink); padding: 1.3rem 1.25rem 1.5rem; display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; animation: tlhIn .35s ease; }
+  .tlh-panel[hidden] { display: none; }
+  @keyframes tlhIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .tlh-ph { display: flex; flex-direction: column; gap: .4rem; }
+  .tlh-pyear { font: 400 48px/1 var(--display); }
+  .tlh-panel ul { list-style: none; margin: 0; padding: 0; }
+  .tlh-panel li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .8rem 0; border-top: 1px dashed color-mix(in srgb, var(--ink) 35%, transparent); }
+  .tlh-panel li:first-child { border-top: 0; padding-top: 0; }
+  .tlh-panel li h4 { margin: 0; font: 400 21px/1.3 var(--display); }
+  .tlh-panel li p { margin: 4px 0 0; font-size: 15.5px; opacity: .8; }
+  .tlh-panel li a.src { text-decoration: none; font-size: 18px; }
+  @media (prefers-reduced-motion: reduce) { .tlh-rail { scroll-behavior: auto; } .tlh-panel { animation: none; } }
+  @media (max-width: 700px) {
+    .tlh-node { flex-basis: 62%; }
+    .tlh-bar .hide-sm { display: none; }
+    .tlh-panel { grid-template-columns: 1fr; gap: .8rem; }
+    .tlh-pyear { font-size: 36px; }
+    .tlh-ph { flex-direction: row; align-items: baseline; gap: .8rem; }
+  }
+
   /* ---------- featured hand ---------- */
   .feature { display: grid; grid-template-columns: 1.6fr 1fr; border-bottom: 1px solid var(--ink); }
   .feature > * { margin: 0; border-right: 1px solid var(--ink); min-width: 0; }
@@ -669,52 +712,97 @@
       <figure class="f-clip rv"><a href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener"><img src="assets/bridge/fast-learner.jpg" alt="Daily bulletin article 'Fast learner' by Brent Manley describing Noah's double squeeze" loading="lazy"></a><figcaption class="mono">"Fast learner" · Brent Manley, daily bulletin</figcaption></figure>
     </div>
 
-    <div class="years">
-      <details class="yr-group rv">
-        <summary><span class="yr">2025</span><span class="hl">South Africa, Open Teams: WBF World Championships</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-          <li><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2024</span><span class="hl">Represented South Africa: World Bridge Games</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2023</span><span class="hl">USA1, Under-26: World Youth Team Championships</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2021</span><span class="hl">Winner, Swedish Chairman's Cup</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-          <li><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2019</span><span class="hl">SA National Teams (defended) · SA National Pairs runner-up</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2018</span><span class="hl">SA National Teams champion: youngest ever</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2017</span><span class="hl">Shortlisted: IBPA Richard Freeman Junior Deal of the Year</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
+    <div class="tlh" id="tlh">
+      <div class="tlh-bar mono"><span>Results timeline<span class="hide-sm"> · scroll or tap a year</span></span><span class="tlh-arrows"><button type="button" class="tlh-arrow" id="tlh-prev" aria-label="Previous year">←</button><button type="button" class="tlh-arrow" id="tlh-next" aria-label="Next year">→</button></span></div>
+      <div class="tlh-rail" id="tlh-rail" role="tablist" aria-label="Bridge results by year">
+        <button class="tlh-node" role="tab" id="tlh-tab-2017" aria-controls="tlh-panel-2017" aria-selected="false" tabindex="-1" data-year="2017">
+          <span class="tlh-dot">♠</span>
+          <span class="tlh-year">2017</span>
+          <span class="tlh-title">IBPA Junior Deal of the Year shortlist</span>
+          <span class="mono tlh-place">Lyon · 2 results</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2018" aria-controls="tlh-panel-2018" aria-selected="false" tabindex="-1" data-year="2018">
+          <span class="tlh-dot r">♥</span>
+          <span class="tlh-year">2018</span>
+          <span class="tlh-title">Youngest-ever SA Teams champion</span>
+          <span class="mono tlh-place">South Africa</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2019" aria-controls="tlh-panel-2019" aria-selected="false" tabindex="-1" data-year="2019">
+          <span class="tlh-dot r">♦</span>
+          <span class="tlh-year">2019</span>
+          <span class="tlh-title">SA Teams title defended</span>
+          <span class="mono tlh-place">South Africa · Istanbul</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2021" aria-controls="tlh-panel-2021" aria-selected="false" tabindex="-1" data-year="2021">
+          <span class="tlh-dot">♣</span>
+          <span class="tlh-year">2021</span>
+          <span class="tlh-title">Swedish Chairman's Cup winner</span>
+          <span class="mono tlh-place">Online · South Africa · 2 results</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2023" aria-controls="tlh-panel-2023" aria-selected="false" tabindex="-1" data-year="2023">
+          <span class="tlh-dot">♠</span>
+          <span class="tlh-year">2023</span>
+          <span class="tlh-title">USA1 · Under-26 World Youth</span>
+          <span class="mono tlh-place">Veldhoven</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2024" aria-controls="tlh-panel-2024" aria-selected="false" tabindex="-1" data-year="2024">
+          <span class="tlh-dot r">♥</span>
+          <span class="tlh-year">2024</span>
+          <span class="tlh-title">World Bridge Games for South Africa</span>
+          <span class="mono tlh-place">Buenos Aires</span>
+        </button>
+        <button class="tlh-node" role="tab" id="tlh-tab-2025" aria-controls="tlh-panel-2025" aria-selected="true" tabindex="0" data-year="2025">
+          <span class="tlh-dot r">♦</span>
+          <span class="tlh-year">2025</span>
+          <span class="tlh-title">World Championships for South Africa</span>
+          <span class="mono tlh-place">Herning · 2 results</span>
+        </button>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2017" aria-labelledby="tlh-tab-2017" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2017</span><span class="mono dim">Lyon</span></div>
         <ul>
           <li><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
           <li><div><h4>World Youth Open Championships, Lyon: Junior Teams</h4><p>Norton team · opened with a 37–0 win over Finland</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
         </ul>
-      </details>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2018" aria-labelledby="tlh-tab-2018" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2018</span><span class="mono dim">South Africa</span></div>
+        <ul>
+          <li><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2019" aria-labelledby="tlh-tab-2019" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2019</span><span class="mono dim">South Africa · Istanbul</span></div>
+        <ul>
+          <li><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2021" aria-labelledby="tlh-tab-2021" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2021</span><span class="mono dim">Online · South Africa</span></div>
+        <ul>
+          <li><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2023" aria-labelledby="tlh-tab-2023" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2023</span><span class="mono dim">Veldhoven</span></div>
+        <ul>
+          <li><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2024" aria-labelledby="tlh-tab-2024" hidden>
+        <div class="tlh-ph"><span class="tlh-pyear">2024</span><span class="mono dim">Buenos Aires</span></div>
+        <ul>
+          <li><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
+      <div class="tlh-panel" role="tabpanel" id="tlh-panel-2025" aria-labelledby="tlh-tab-2025">
+        <div class="tlh-ph"><span class="tlh-pyear">2025</span><span class="mono dim">Herning</span></div>
+        <ul>
+          <li><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+          <li><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
+        </ul>
+      </div>
     </div>
 
     <details class="press-all">
@@ -849,6 +937,41 @@
     }, 180);
   }
 
+
+
+  // ---------- horizontal bridge timeline ----------
+  (function () {
+    const root = document.getElementById('tlh'); if (!root) return;
+    const rail = document.getElementById('tlh-rail');
+    const tabs = [...rail.querySelectorAll('.tlh-node')];
+    const prev = document.getElementById('tlh-prev'), next = document.getElementById('tlh-next');
+    let cur = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
+    function select(i, focus) {
+      i = Math.max(0, Math.min(tabs.length - 1, i));
+      tabs.forEach((t, j) => {
+        const on = j === i;
+        t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      cur = i;
+      prev.disabled = i === 0; next.disabled = i === tabs.length - 1;
+      const t = tabs[i];
+      const left = t.offsetLeft - (rail.clientWidth - t.offsetWidth) / 2;
+      rail.scrollTo({ left: Math.max(0, left) });
+      if (focus) t.focus({ preventScroll: true });
+    }
+    tabs.forEach((t, i) => t.addEventListener('click', () => select(i)));
+    rail.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); select(cur + 1, true); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); select(cur - 1, true); }
+      if (e.key === 'Home') { e.preventDefault(); select(0, true); }
+      if (e.key === 'End') { e.preventDefault(); select(tabs.length - 1, true); }
+    });
+    prev.addEventListener('click', () => select(cur - 1));
+    next.addEventListener('click', () => select(cur + 1));
+    // start on the latest year, scrolled into view without animating the page
+    rail.style.scrollBehavior = 'auto'; select(cur); requestAnimationFrame(() => rail.style.scrollBehavior = '');
+  })();
 
   // reveal on scroll
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
