@@ -281,12 +281,6 @@
     .yr-group ul { padding-left: 1.25rem; }
   }
 
-  .press-all > summary { list-style: none; cursor: pointer; transition: background .2s, color .2s; }
-  .press-all > summary::-webkit-details-marker { display: none; }
-  .press-all > summary:hover { background: var(--ink); color: var(--primary); }
-  .press-all .chev { font: 400 18px/1 var(--display); transition: transform .25s; }
-  .press-all[open] > summary .chev { transform: rotate(45deg); }
-  .press-all .years { border-top: 0; }
 
   /* ---------- bridge timeline (horizontal) ---------- */
   .tlh { border-bottom: 1px solid var(--ink); }
@@ -317,6 +311,10 @@
   .tlh-ph { display: flex; flex-direction: column; gap: .4rem; }
   .tlh-pyear { font: 400 48px/1 var(--display); }
   .tlh-panel ul { list-style: none; margin: 0; padding: 0; }
+  .tlh-body { display: flex; flex-direction: column; gap: .5rem; }
+  .tlh-sub { padding-bottom: .2rem; }
+  .tlh-sub + ul { margin-bottom: .8rem; }
+  .tlh-press li h4 { font-size: 18px; }
   .tlh-panel li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .8rem 0; border-top: 1px dashed color-mix(in srgb, var(--ink) 35%, transparent); }
   .tlh-panel li:first-child { border-top: 0; padding-top: 0; }
   .tlh-panel li h4 { margin: 0; font: 400 21px/1.3 var(--display); }
@@ -719,148 +717,145 @@
           <span class="tlh-dot">♠</span>
           <span class="tlh-year">2017</span>
           <span class="tlh-title">IBPA Junior Deal of the Year shortlist</span>
-          <span class="mono tlh-place">Lyon · 2 results</span>
+          <span class="mono tlh-place">Lyon · 2 results · 2 articles</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2018" aria-controls="tlh-panel-2018" aria-selected="false" tabindex="-1" data-year="2018">
           <span class="tlh-dot r">♥</span>
           <span class="tlh-year">2018</span>
           <span class="tlh-title">Youngest-ever SA Teams champion</span>
-          <span class="mono tlh-place">South Africa</span>
+          <span class="mono tlh-place">South Africa · 2 articles</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2019" aria-controls="tlh-panel-2019" aria-selected="false" tabindex="-1" data-year="2019">
           <span class="tlh-dot r">♦</span>
           <span class="tlh-year">2019</span>
           <span class="tlh-title">SA Teams title defended</span>
-          <span class="mono tlh-place">South Africa · Istanbul</span>
+          <span class="mono tlh-place">South Africa · Istanbul · 1 article</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2021" aria-controls="tlh-panel-2021" aria-selected="false" tabindex="-1" data-year="2021">
           <span class="tlh-dot">♣</span>
           <span class="tlh-year">2021</span>
           <span class="tlh-title">Swedish Chairman's Cup winner</span>
-          <span class="mono tlh-place">Online · South Africa · 2 results</span>
+          <span class="mono tlh-place">Online · South Africa · 2 results · 2 articles</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2023" aria-controls="tlh-panel-2023" aria-selected="false" tabindex="-1" data-year="2023">
           <span class="tlh-dot">♠</span>
           <span class="tlh-year">2023</span>
           <span class="tlh-title">USA1 · Under-26 World Youth</span>
-          <span class="mono tlh-place">Veldhoven</span>
+          <span class="mono tlh-place">Veldhoven · 1 article</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2024" aria-controls="tlh-panel-2024" aria-selected="false" tabindex="-1" data-year="2024">
           <span class="tlh-dot r">♥</span>
           <span class="tlh-year">2024</span>
           <span class="tlh-title">World Bridge Games for South Africa</span>
-          <span class="mono tlh-place">Buenos Aires</span>
+          <span class="mono tlh-place">Buenos Aires · 1 article</span>
         </button>
         <button class="tlh-node" role="tab" id="tlh-tab-2025" aria-controls="tlh-panel-2025" aria-selected="true" tabindex="0" data-year="2025">
           <span class="tlh-dot r">♦</span>
           <span class="tlh-year">2025</span>
           <span class="tlh-title">World Championships for South Africa</span>
-          <span class="mono tlh-place">Herning · 2 results</span>
+          <span class="mono tlh-place">Herning · 2 results · 2 articles</span>
         </button>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2017" aria-labelledby="tlh-tab-2017" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2017</span><span class="mono dim">Lyon</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>Shortlisted: IBPA Richard Freeman Junior Deal of the Year</h4><p>For a double squeeze in the Junior Teams at the World Youth Open Championships, Lyon · IBPA Bulletin, Oct 2017 (Tom Townsend)</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
           <li><div><h4>World Youth Open Championships, Lyon: Junior Teams</h4><p>Norton team · opened with a 37–0 win over Finland</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>Richard Freeman Junior Deal of the Year</h4><p><span class="mono">IBPA Awards · 2018</span> · Compiled by John Carruthers. Noah's Lyon hand is on the shortlist.</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+            <li><div><h4>Fast learner</h4><p><span class="mono">WBF Daily Bulletin · 2017</span> · Brent Manley on the double squeeze in Lyon.</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2018" aria-labelledby="tlh-tab-2018" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2018</span><span class="mono dim">South Africa</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>SA National Teams champion: youngest ever</h4><p>Also won the Medwin Cup for Gauteng, played the World Bridge Series in Orlando, and topped South Africa's red-masterpoint list</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>Movers and Shakers in 2018</h4><p><span class="mono">SABF "The Bridge" · 2019</span> · Top of the national masterpoint list.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+            <li><div><h4>Orlando &amp; the Inter-Provincials</h4><p><span class="mono">SABF "The Bridge" · 2018</span> · World Bridge Series; the Medwin Cup win.</p></div><a class="src" href="https://www.sabf.co.za/newsletters/S%20A%20B%20F.5.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2019" aria-labelledby="tlh-tab-2019" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2019</span><span class="mono dim">South Africa · Istanbul</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>SA National Teams (defended) · SA National Pairs runner-up</h4><p>Also reached the semifinals of the European Open Pairs in Istanbul</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>Bridging the gap</h4><p><span class="mono">SA Jewish Report · 2020</span> · Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2021" aria-labelledby="tlh-tab-2021" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2021</span><span class="mono dim">Online · South Africa</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>Winner, Swedish Chairman's Cup</h4><p>Team RSE · 50-team field · flagship teams event of the Swedish Bridge Festival</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
           <li><div><h4>1st, Congress Teams: SABF National Congress</h4><p>With Bernard Donde, Neville Eber and Chris Bosenberg</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>Vinnare av Chairman's Cup</h4><p><span class="mono">Svenska Bridgeförbundet · 2021</span> · Official honor roll: team RSE, 2021.</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+            <li><div><h4>Congress results</h4><p><span class="mono">SABF "The Bridge" · 2021</span> · First place, Congress Teams.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2023" aria-labelledby="tlh-tab-2023" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2023</span><span class="mono dim">Veldhoven</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>USA1, Under-26: World Youth Team Championships</h4><p>Veldhoven, Netherlands · first in the round robin</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>U.S. juniors at the World Youth Championships</h4><p><span class="mono">ACBL Daily Bulletin · 2023</span> · USA1 tops the Under-26 round robin in Veldhoven.</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2024" aria-labelledby="tlh-tab-2024" hidden>
         <div class="tlh-ph"><span class="tlh-pyear">2024</span><span class="mono dim">Buenos Aires</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>Represented South Africa: World Bridge Games</h4><p>Buenos Aires, Argentina · Open team</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>SA team at Argentina championship a Jewish affair</h4><p><span class="mono">SA Jewish Report · 2024</span> · Father and son qualify for South Africa.</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
       <div class="tlh-panel" role="tabpanel" id="tlh-panel-2025" aria-labelledby="tlh-tab-2025">
         <div class="tlh-ph"><span class="tlh-pyear">2025</span><span class="mono dim">Herning</span></div>
-        <ul>
+        <div class="tlh-body">
+          <div class="mono dim tlh-sub">Results</div>
+          <ul>
           <li><div><h4>South Africa, Open Teams: WBF World Championships</h4><p>Herning, Denmark · partnered Robert Stephens · beat England 24–1 in the opening match</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
           <li><div><h4>Won the South African Open Team Trials</h4><p>Eber team · qualified for the African Zonal and the World Championships</p></div><a class="src" href="https://sabf.co.za/_files/ugd/8f3ab1_3c3e560c41d7433d9b2297721ee78187.pdf" target="_blank" rel="noopener" aria-label="Source">↗</a></li>
-        </ul>
+          </ul>
+          <div class="mono dim tlh-sub">In the press</div>
+          <ul class="tlh-press">
+            <li><div><h4>WBF Championships: the South African perspective</h4><p><span class="mono">SABF · 2025</span> · Hand-by-hand coverage from Herning.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+            <li><div><h4>Off to the World Championships</h4><p><span class="mono">SABF Newsletter · 2025</span> · The Open team is announced.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-newsletter-August-2025.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <details class="press-all">
-      <summary class="sub-bar mono"><span>In the press (11)</span><span class="chev" aria-hidden="true">+</span></summary>
-    <div class="years press-years">
-      <details class="yr-group rv">
-        <summary><span class="yr">2025</span><span class="hl">WBF Championships: the South African perspective</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>WBF Championships: the South African perspective</h4><p><span class="mono">SABF</span> · Hand-by-hand coverage from Herning.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/WBF-Championships-2025-Bulletin-number-1.-The-South-African-perspective.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-          <li><div><h4>Off to the World Championships</h4><p><span class="mono">SABF Newsletter</span> · The Open team is announced.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-newsletter-August-2025.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2024</span><span class="hl">SA team at Argentina championship a Jewish affair</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>SA team at Argentina championship a Jewish affair</h4><p><span class="mono">SA Jewish Report</span> · Father and son qualify for South Africa.</p></div><a class="src" href="https://www.sajr.co.za/sa-team-at-argentina-championship-a-jewish-affair/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2023</span><span class="hl">U.S. juniors at the World Youth Championships</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>U.S. juniors at the World Youth Championships</h4><p><span class="mono">ACBL Daily Bulletin</span> · USA1 tops the Under-26 round robin in Veldhoven.</p></div><a class="src" href="https://cdn.acbl.org/nabc/2023/03/bulletins/db9.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2021</span><span class="hl">Vinnare av Chairman's Cup</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Vinnare av Chairman's Cup</h4><p><span class="mono">Svenska Bridgeförbundet</span> · Official honor roll: team RSE, 2021.</p></div><a class="src" href="https://www.svenskbridge.se/vinnare/chairmans-cup" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-          <li><div><h4>Congress results</h4><p><span class="mono">SABF "The Bridge"</span> · First place, Congress Teams.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/SABF-The-Bridge-August-2021.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2020</span><span class="hl">Bridging the gap</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Bridging the gap</h4><p><span class="mono">SA Jewish Report</span> · Profile: youngest-ever SA Teams title, Istanbul, the move to the US.</p></div><a class="src" href="https://www.sajr.co.za/bridging-the-gap/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2019</span><span class="hl">Movers and Shakers in 2018</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Movers and Shakers in 2018</h4><p><span class="mono">SABF "The Bridge"</span> · Top of the national masterpoint list.</p></div><a class="src" href="https://sabf.co.za/wp-content/uploads/2025/08/S-A-B-F.7.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2018</span><span class="hl">Richard Freeman Junior Deal of the Year</span><span class="mono more">+1 more</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Richard Freeman Junior Deal of the Year</h4><p><span class="mono">IBPA Awards</span> · Compiled by John Carruthers. Noah's Lyon hand is on the shortlist.</p></div><a class="src" href="https://ibpa.com/award-booklets/" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-          <li><div><h4>Orlando &amp; the Inter-Provincials</h4><p><span class="mono">SABF "The Bridge"</span> · World Bridge Series; the Medwin Cup win.</p></div><a class="src" href="https://www.sabf.co.za/newsletters/S%20A%20B%20F.5.pdf" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-      <details class="yr-group rv">
-        <summary><span class="yr">2017</span><span class="hl">Fast learner</span><span class="chev" aria-hidden="true">+</span></summary>
-        <ul>
-          <li><div><h4>Fast learner</h4><p><span class="mono">WBF Daily Bulletin</span> · Brent Manley on the double squeeze in Lyon.</p></div><a class="src" href="assets/bridge/fast-learner.jpg" target="_blank" rel="noopener" aria-label="Open">↗</a></li>
-        </ul>
-      </details>
-    </div>
-    </details>
   </section>
 
   <!-- ===== off the clock ===== -->
